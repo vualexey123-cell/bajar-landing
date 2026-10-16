@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+/* Design tokens. One accent (cobalt), one radius scale, light + dark. */
+:root {
+  --bg: #f3f4f7;
+  --surface: #fbfbfd;
+  --surface-2: #e9ecf2;
+  --ink: #0e1220;
+  --ink-2: #525a6b;
+  --line: #dce0e8;
+  --accent: #2f55d4;
+  --accent-hover: #2647b8;
+  --on-accent: #f7f8fb;
+  --accent-soft: #e2e8fb;
+  --accent-text: #2f55d4;
+  --deep: #0e1220;
+  --deep-2: #1a2238;
+  --on-deep: #eef0f5;
+  --on-deep-2: #a9b4cc;
+  --shadow-tint: 225 45% 22%;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0e16;
+    --surface: #121725;
+    --surface-2: #1a2030;
+    --ink: #eef0f5;
+    --ink-2: #9aa3b5;
+    --line: #252c3d;
+    --accent: #3a5fe0;
+    --accent-hover: #4a6dea;
+    --on-accent: #f7f8fb;
+    --accent-soft: #1b2547;
+    --accent-text: #8fa6ff;
+    --deep: #141a2a;
+    --deep-2: #1f2840;
+    --on-deep: #eef0f5;
+    --on-deep-2: #a9b4cc;
+    --shadow-tint: 228 60% 3%;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-text: var(--accent-text);
+  --color-deep: var(--deep);
+  --color-deep-2: var(--deep-2);
+  --color-on-deep: var(--on-deep);
+  --color-on-deep-2: var(--on-deep-2);
+
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Radius scale: chip 10 / tile 18 / card 28 / full */
+  --radius-chip: 0.625rem;
+  --radius-tile: 1.125rem;
+  --radius-card: 1.75rem;
+
+  --shadow-float:
+    0 1px 2px hsl(var(--shadow-tint) / 0.06),
+    0 18px 40px -12px hsl(var(--shadow-tint) / 0.28);
+  --shadow-soft:
+    0 1px 2px hsl(var(--shadow-tint) / 0.05),
+    0 8px 24px -10px hsl(var(--shadow-tint) / 0.16);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* FAQ accordion: native <details> with an animated height where supported. */
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+  details.faq::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition:
+      block-size 0.45s var(--ease-out-expo),
+      content-visibility 0.45s allow-discrete;
+  }
+  details.faq[open]::details-content {
+    block-size: auto;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    details.faq::details-content {
+      transition: none;
+    }
+  }
+}
+details.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Range slider used in the pricing calculator. */
+input[type="range"].range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 28px;
+  background: transparent;
+  cursor: pointer;
+}
+input[type="range"].range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--accent) 0 var(--fill, 0%),
+    var(--deep-2) var(--fill, 0%) 100%
+  );
+}
+input[type="range"].range::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--deep-2);
+}
+input[type="range"].range::-moz-range-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+input[type="range"].range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  margin-top: -9px;
+  border-radius: 999px;
+  background: var(--on-deep);
+  border: 5px solid var(--accent);
+  transition: transform 0.2s var(--ease-out-expo);
+}
+input[type="range"].range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--on-deep);
+  border: 5px solid var(--accent);
+}
+input[type="range"].range:active::-webkit-slider-thumb {
+  transform: scale(1.12);
+}
+
+/* Page-load entrance for hero copy (CSS only, no JS needed). */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.9s var(--ease-out-expo) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+}
