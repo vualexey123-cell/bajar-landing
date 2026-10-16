@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { List, X } from "@phosphor-icons/react";
-import { nav } from "@/lib/content";
+import { cta, nav } from "@/lib/content";
 import { Button, Container, Logo } from "@/components/ui";
 
 export function SiteHeader() {
@@ -59,7 +59,7 @@ export function SiteHeader() {
 
           <div className="flex items-center gap-2">
             <div className="hidden sm:block">
-              <Button href="#lead">Запросить демо</Button>
+              <Button href="#lead">{cta.primary}</Button>
             </div>
             <button
               type="button"
@@ -105,7 +105,7 @@ export function SiteHeader() {
               ))}
               <div className="mt-6" onClick={() => setOpen(false)}>
                 <Button href="#lead" size="lg" className="w-full">
-                  Запросить демо
+                  {cta.primary}
                 </Button>
               </div>
             </Container>

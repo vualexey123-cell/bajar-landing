@@ -1,5 +1,6 @@
 import { Bank, HardDrives, LockKey, Signature } from "@phosphor-icons/react/dist/ssr";
 import { security } from "@/lib/content";
+import { site } from "@/lib/site";
 import { Container, SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
 
@@ -11,15 +12,36 @@ const icons = {
 } as const;
 
 export function Security() {
+  const c = site.company;
+  const hasCompany = Boolean(c.legalName);
+  const companyRows = [
+    ["СТИР", c.stir],
+    ["Адрес", c.address],
+    ["Банк-партнёр", c.bank],
+    [c.founderRole || "Основатель", c.founder],
+  ].filter(([, v]) => v);
+
   return (
     <section aria-labelledby="security-title" className="pb-24 md:pb-36">
       <Container className="grid grid-cols-1 gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14">
         <Reveal>
           <div className="lg:sticky lg:top-28">
             <SectionTitle>
-              <span id="security-title">{security.title}</span>
+              <span id="security-title">{hasCompany ? security.titleWithCompany : security.title}</span>
             </SectionTitle>
             <p className="mt-5 max-w-[42ch] text-[18px] leading-relaxed text-ink-2">{security.text}</p>
+            {hasCompany && (
+              <dl className="mt-8 rounded-card bg-surface p-6 ring-1 ring-line ring-inset">
+                <dt className="text-[13px] text-ink-2">{security.companyLabel}</dt>
+                <dd className="mt-1 text-[18px] font-semibold tracking-[-0.02em]">{c.legalName}</dd>
+                {companyRows.map(([k, v]) => (
+                  <div key={k} className="mt-3 flex justify-between gap-4 text-[14px]">
+                    <dt className="text-ink-2">{k}</dt>
+                    <dd className="text-right font-medium">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
           </div>
         </Reveal>
 

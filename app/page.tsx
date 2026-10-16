@@ -1,6 +1,6 @@
 import { SiteHeader } from "@/components/site-header";
 import { Hero } from "@/components/hero";
-import { Comparison } from "@/components/comparison";
+import { Alternatives } from "@/components/alternatives";
 import { Features } from "@/components/features";
 import { HowItWorks } from "@/components/how-it-works";
 import { Contractors } from "@/components/contractors";
@@ -17,10 +17,10 @@ export default function Home() {
       <SiteHeader />
       <main>
         <Hero />
-        <Industries />
-        <Comparison />
+        <Alternatives />
         <HowItWorks />
         <Features />
+        <Industries />
         <Contractors />
         <Security />
         <Pricing />

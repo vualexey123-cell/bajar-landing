@@ -9,6 +9,15 @@ export const site = {
   // POST endpoint that receives lead-form submissions as JSON.
   // Leave empty to run the form in demo mode (nothing is sent).
   leadEndpoint: process.env.NEXT_PUBLIC_LEAD_ENDPOINT ?? "",
+  // Shown in the "who is behind Bajar" card once filled in; the card stays hidden while empty.
+  company: {
+    legalName: "",
+    stir: "",
+    address: "",
+    bank: "",
+    founder: "",
+    founderRole: "",
+  },
 } as const;
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
