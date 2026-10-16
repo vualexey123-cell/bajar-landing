@@ -29,7 +29,12 @@ function AnimatedSum({ value }: { value: number }) {
 
 export function Pricing() {
   const sliderId = useId();
+  const payoutsId = useId();
   const [stop, setStop] = useState<number>(pricing.defaultStop);
+  const [payoutStop, setPayoutStop] = useState<number>(pricing.defaultPayoutStop);
+  const payouts = pricing.payoutStops[payoutStop];
+  const hours = Math.round((payouts * pricing.minutesPerPayout) / 60);
+  const payoutsFill = `${(payoutStop / (pricing.payoutStops.length - 1)) * 100}%`;
   const volume = pricing.stops[stop];
   const tierIndex = pricing.tiers.findIndex((t) => volume <= t.upTo);
   const custom = volume > MAX_TIER;
@@ -70,6 +75,27 @@ export function Pricing() {
                 aria-valuetext={formatVolume(volume)}
                 className="range mt-4"
                 style={{ "--fill": fill } as React.CSSProperties}
+              />
+
+              <div className="mt-8 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                <label htmlFor={payoutsId} className="text-[15px] text-on-deep-2">
+                  {pricing.payoutsLabel}
+                </label>
+                <output htmlFor={payoutsId} className="text-[24px] font-semibold tracking-[-0.02em] tabular-nums">
+                  {fmt.format(payouts)}
+                </output>
+              </div>
+              <input
+                id={payoutsId}
+                type="range"
+                min={0}
+                max={pricing.payoutStops.length - 1}
+                step={1}
+                value={payoutStop}
+                onChange={(e) => setPayoutStop(Number(e.target.value))}
+                aria-valuetext={`${fmt.format(payouts)} выплат`}
+                className="range mt-4"
+                style={{ "--fill": payoutsFill } as React.CSSProperties}
               />
 
               <ul className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-4" aria-label="Ставки по оборотам">
@@ -122,6 +148,13 @@ export function Pricing() {
                 </div>
               </dl>
             )}
+            <div className="border-t border-on-deep/15 pt-6">
+              <p className="text-[14px] text-on-deep-2">{pricing.timeLabel}</p>
+              <p className="mt-1 text-[22px] font-semibold tracking-[-0.02em] tabular-nums">
+                около {fmt.format(hours)} {hours % 10 === 1 && hours % 100 !== 11 ? "часа" : "часов"} в месяц
+              </p>
+              <p className="mt-2 text-[13px] leading-relaxed text-on-deep-2">{pricing.timeNote}</p>
+            </div>
             <Button href="#lead" variant="light" size="lg" className="w-full sm:w-auto sm:self-start">
               {pricing.cta}
             </Button>

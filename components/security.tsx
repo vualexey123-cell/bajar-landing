@@ -15,9 +15,12 @@ export function Security() {
     <section aria-labelledby="security-title" className="pb-24 md:pb-36">
       <Container className="grid grid-cols-1 gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14">
         <Reveal>
-          <SectionTitle className="lg:sticky lg:top-28">
-            <span id="security-title">{security.title}</span>
-          </SectionTitle>
+          <div className="lg:sticky lg:top-28">
+            <SectionTitle>
+              <span id="security-title">{security.title}</span>
+            </SectionTitle>
+            <p className="mt-5 max-w-[42ch] text-[18px] leading-relaxed text-ink-2">{security.text}</p>
+          </div>
         </Reveal>
 
         <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
