@@ -1,5 +1,5 @@
 import { CheckCircle, XCircle } from "@phosphor-icons/react/dist/ssr";
-import { alternatives } from "@/lib/content";
+import type { Dict } from "@/lib/i18n";
 import { Container, SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
 
@@ -21,7 +21,8 @@ function Mark({ ok, onDeep = false, strong = false }: { ok: boolean; onDeep?: bo
 }
 
 // Manual transfers vs. Bajar: answers "why pay a fee if transfers are cheap".
-export function Alternatives() {
+export function Alternatives({ t }: { t: Dict }) {
+  const { alternatives } = t;
   const { rows, columns } = alternatives;
   const last = rows.length - 1;
   const bajarCol = columns.length - 1;

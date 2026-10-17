@@ -1,9 +1,10 @@
 import { Plus } from "@phosphor-icons/react/dist/ssr";
-import { faq } from "@/lib/content";
+import type { Dict } from "@/lib/i18n";
 import { Container, SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
 
-export function Faq() {
+export function Faq({ t }: { t: Dict }) {
+  const { faq } = t;
   return (
     <section id="faq" aria-labelledby="faq-title" className="pb-24 md:pb-36">
       <Container className="max-w-[880px]">

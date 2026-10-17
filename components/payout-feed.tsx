@@ -3,14 +3,14 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { CheckCircle, ClockCountdown } from "@phosphor-icons/react";
-import { features } from "@/lib/content";
+import type { Dict } from "@/lib/i18n";
 
-const { rows, pending, done } = features.payouts;
 const STEP_MS = 1100;
 const HOLD_MS = 2400;
 
 // Rows flip from "processing" to "paid" one by one, then the registry resets.
-export function PayoutFeed() {
+export function PayoutFeed({ payouts, currency }: { payouts: Dict["features"]["payouts"]; currency: string }) {
+  const { rows, pending, done } = payouts;
   const reduce = useReducedMotion();
   const [paid, setPaid] = useState(0);
 
@@ -19,16 +19,16 @@ export function PayoutFeed() {
     const delay = paid >= rows.length ? HOLD_MS : STEP_MS;
     const t = setTimeout(() => setPaid((p) => (p >= rows.length ? 0 : p + 1)), delay);
     return () => clearTimeout(t);
-  }, [paid, reduce]);
+  }, [paid, reduce, rows.length]);
 
   const count = reduce ? rows.length : paid;
 
   return (
     <div className="rounded-tile bg-bg p-2">
       <div className="flex items-center justify-between px-3 pt-2 pb-3 text-[13px] text-ink-2">
-        <span>Реестр № 128</span>
+        <span>{payouts.registry}</span>
         <span className="tabular-nums" aria-live="polite">
-          Отправлено {count} из {rows.length}
+          {payouts.sent.replace("{count}", String(count)).replace("{total}", String(rows.length))}
         </span>
       </div>
       <ul className="flex flex-col gap-1.5">
@@ -49,7 +49,7 @@ export function PayoutFeed() {
                 <span className="block truncate text-[15px] font-medium">{r.name}</span>
                 <span className="block text-[13px] text-ink-2">{r.card}</span>
               </span>
-              <span className="hidden text-[15px] font-semibold tabular-nums sm:block">{r.amount} сум</span>
+              <span className="hidden text-[15px] font-semibold tabular-nums sm:block">{r.amount} {currency}</span>
               <span className="relative h-7 w-[124px] shrink-0">
                 <AnimatePresence initial={false} mode="popLayout">
                   <motion.span

@@ -1,5 +1,5 @@
 import { Bank, HardDrives, LockKey, Signature } from "@phosphor-icons/react/dist/ssr";
-import { security } from "@/lib/content";
+import type { Dict } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import { Container, SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
@@ -11,14 +11,16 @@ const icons = {
   lock: LockKey,
 } as const;
 
-export function Security() {
+export function Security({ t }: { t: Dict }) {
+  const { security } = t;
+  const fields = security.companyFields;
   const c = site.company;
   const hasCompany = Boolean(c.legalName);
   const companyRows = [
-    ["СТИР", c.stir],
-    ["Адрес", c.address],
-    ["Банк-партнёр", c.bank],
-    [c.founderRole || "Основатель", c.founder],
+    [fields.stir, c.stir],
+    [fields.address, c.address],
+    [fields.bank, c.bank],
+    [c.founderRole || fields.founder, c.founder],
   ].filter(([, v]) => v);
 
   return (
@@ -47,7 +49,7 @@ export function Security() {
 
         <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           {security.items.map((s, i) => {
-            const Icon = icons[s.icon];
+            const Icon = icons[s.icon as keyof typeof icons];
             return (
               <li key={s.title}>
                 <Reveal delay={i * 0.05} className="h-full rounded-card bg-surface p-6 sm:p-8">

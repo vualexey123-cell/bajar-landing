@@ -4,10 +4,35 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { List, X } from "@phosphor-icons/react";
-import { cta, nav } from "@/lib/content";
+import { localeHome, localeLabel, locales, htmlLang, type Dict, type Locale } from "@/lib/i18n";
 import { Button, Container, Logo } from "@/components/ui";
 
-export function SiteHeader() {
+function LanguageSwitch({ t, locale }: { t: Dict; locale: Locale }) {
+  return (
+    <nav aria-label={t.ui.language}>
+      <ul className="flex items-center rounded-full bg-surface-2 p-1">
+        {locales.map((l) => (
+          <li key={l}>
+            <Link
+              href={localeHome[l]}
+              hrefLang={htmlLang[l]}
+              lang={htmlLang[l]}
+              aria-current={l === locale ? "page" : undefined}
+              className={`block rounded-full px-2.5 py-1.5 text-[13px] font-medium transition-colors ${
+                l === locale ? "bg-bg text-ink shadow-sm" : "text-ink-2 hover:text-ink"
+              }`}
+            >
+              {localeLabel[l]}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
+export function SiteHeader({ t, locale }: { t: Dict; locale: Locale }) {
+  const { cta, nav } = t;
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -38,11 +63,11 @@ export function SiteHeader() {
         }`}
       >
         <Container className="flex h-[72px] items-center justify-between gap-6">
-          <Link href="#top" aria-label="Bajar, на главную" onClick={() => setOpen(false)}>
+          <Link href="#top" aria-label={t.ui.home} onClick={() => setOpen(false)}>
             <Logo />
           </Link>
 
-          <nav aria-label="Основная навигация" className="hidden lg:block">
+          <nav aria-label={t.ui.mainNav} className="hidden lg:block">
             <ul className="flex items-center gap-1">
               {nav.map((item) => (
                 <li key={item.href}>
@@ -58,12 +83,13 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <LanguageSwitch t={t} locale={locale} />
             <div className="hidden sm:block">
               <Button href="#lead">{cta.primary}</Button>
             </div>
             <button
               type="button"
-              aria-label={open ? "Закрыть меню" : "Открыть меню"}
+              aria-label={open ? t.ui.closeMenu : t.ui.openMenu}
               aria-expanded={open}
               aria-controls="mobile-menu"
               onClick={() => setOpen((v) => !v)}

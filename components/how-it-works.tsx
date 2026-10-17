@@ -2,13 +2,14 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useSpring } from "motion/react";
-import { steps } from "@/lib/content";
+import type { Dict } from "@/lib/i18n";
 import { Container, SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
 
 // The rail fills as the section scrolls through the viewport, so the reader
 // sees how far along the flow they are.
-export function HowItWorks() {
+export function HowItWorks({ t }: { t: Dict }) {
+  const { steps } = t;
   const ref = useRef<HTMLOListElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 75%", "end 55%"] });
   const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 30, restDelta: 0.001 });

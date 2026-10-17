@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
   basePath,
   images: { unoptimized: true },
   trailingSlash: true,
+  // Three root layouts (ru, uz, en) means no single layout for the 404 page.
+  experimental: { globalNotFound: true },
   turbopack: {
     rules: {
       "*.css": {

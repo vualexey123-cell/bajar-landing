@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { footer } from "@/lib/content";
+import type { Dict } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import { Container, Logo } from "@/components/ui";
 
-export function SiteFooter() {
+export function SiteFooter({ t }: { t: Dict }) {
+  const { footer } = t;
   return (
     <footer className="pt-10 pb-12">
       <Container>
@@ -41,7 +42,9 @@ export function SiteFooter() {
                   Telegram {site.telegramHandle}
                 </a>
               </li>
-              <li>{site.city}, Узбекистан</li>
+              <li>
+                {t.ui.city}, {t.ui.country}
+              </li>
             </ul>
           </div>
         </div>

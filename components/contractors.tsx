@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { CreditCard, FileText, Headset, Signature } from "@phosphor-icons/react/dist/ssr";
-import { contractors } from "@/lib/content";
+import type { Dict } from "@/lib/i18n";
 import { asset } from "@/lib/site";
 import { Container, SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
@@ -12,7 +12,8 @@ const icons = {
   document: FileText,
 } as const;
 
-export function Contractors() {
+export function Contractors({ t }: { t: Dict }) {
+  const { contractors } = t;
   return (
     <section id="contractors" aria-labelledby="contractors-title" className="pb-24 md:pb-36">
       <Container>
@@ -25,7 +26,7 @@ export function Contractors() {
 
             <ul className="mt-10 grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2 lg:mt-12">
               {contractors.points.map((p) => {
-                const Icon = icons[p.icon];
+                const Icon = icons[p.icon as keyof typeof icons];
                 return (
                   <li key={p.title}>
                     <span className="grid size-11 place-items-center rounded-chip bg-accent-soft text-accent-text">

@@ -1,9 +1,10 @@
 import { SealCheck } from "@phosphor-icons/react/dist/ssr";
-import { cta, hero } from "@/lib/content";
+import type { Dict } from "@/lib/i18n";
 import { asset } from "@/lib/site";
 import { Button, Container } from "@/components/ui";
 
-export function Hero() {
+export function Hero({ t }: { t: Dict }) {
+  const { cta, hero } = t;
   return (
     <section id="top" className="relative pt-[104px] pb-20 md:pt-[120px] md:pb-28">
       <Container>
@@ -45,7 +46,7 @@ export function Hero() {
               src={asset("/img/dashboard.webp")}
               width={2880}
               height={1520}
-              alt="Кабинет компании в Bajar: баланс, выплаты по дням, документы на подпись и последние выплаты"
+              alt={t.ui.heroImageAlt}
               fetchPriority="high"
               className="block h-auto w-full rounded-t-[14px] shadow-[0_-1px_0_rgb(255_255_255/0.25),0_24px_60px_-20px_rgb(8_14_40/0.55)] sm:rounded-t-[20px]"
             />

@@ -3,7 +3,7 @@
 import { useId, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { CheckCircle, PaperPlaneTilt, TelegramLogo, EnvelopeSimple } from "@phosphor-icons/react";
-import { lead } from "@/lib/content";
+import type { Dict } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import { Container } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
@@ -23,7 +23,8 @@ function formatPhone(raw: string) {
 const inputBase =
   "h-13 w-full rounded-chip border bg-bg px-4 text-[16px] text-ink transition-colors duration-200 placeholder:text-ink-2 focus:border-accent focus:outline-none focus-visible:outline-none";
 
-export function LeadForm() {
+export function LeadForm({ t }: { t: Dict }) {
+  const { lead } = t;
   const uid = useId();
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Errors>({});

@@ -11,7 +11,7 @@ import {
   Truck,
   VideoCamera,
 } from "@phosphor-icons/react";
-import { industries } from "@/lib/content";
+import type { Dict } from "@/lib/i18n";
 import { asset } from "@/lib/site";
 import { Container, SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
@@ -25,7 +25,8 @@ const icons = {
   media: VideoCamera,
 } as const;
 
-export function Industries() {
+export function Industries({ t }: { t: Dict }) {
+  const { industries } = t;
   const [active, setActive] = useState(0);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const items = industries.items;
@@ -56,13 +57,13 @@ export function Industries() {
 
           <div
             role="tablist"
-            aria-label="Отрасли"
+            aria-label={industries.tabsLabel}
             aria-orientation="vertical"
             onKeyDown={onKeyDown}
             className="-mx-5 mt-8 flex snap-x gap-2 overflow-x-auto px-5 pb-2 [scrollbar-width:none] lg:mx-0 lg:mt-10 lg:flex-col lg:overflow-visible lg:px-0 lg:pb-0"
           >
             {items.map((it, i) => {
-              const Icon = icons[it.id];
+              const Icon = icons[it.id as keyof typeof icons];
               const selected = i === active;
               return (
                 <button
