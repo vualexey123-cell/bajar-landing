@@ -4,6 +4,7 @@ import { useEffect, useId, useMemo, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion, useSpring, useTransform } from "motion/react";
 import {
+  Briefcase,
   GraduationCap,
   HardHat,
   Laptop,
@@ -23,6 +24,7 @@ const industryIcons = {
   education: GraduationCap,
   repair: HardHat,
   media: VideoCamera,
+  other: Briefcase,
 } as const;
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -31,10 +33,20 @@ function fillTemplate(tpl: string, values: Record<string, string>) {
   return tpl.replace(/\{(\w+)\}/g, (_, k) => values[k] ?? "");
 }
 
-function AnimatedSum({ value, fmt, currency }: { value: number; fmt: Intl.NumberFormat; currency: string }) {
+function AnimatedSum({
+  value,
+  fmt,
+  currency,
+  prefix = "",
+}: {
+  value: number;
+  fmt: Intl.NumberFormat;
+  currency: string;
+  prefix?: string;
+}) {
   const reduce = useReducedMotion();
   const spring = useSpring(value, { stiffness: 140, damping: 26 });
-  const text = useTransform(spring, (v) => `${fmt.format(Math.round(v / 1000) * 1000)} ${currency}`);
+  const text = useTransform(spring, (v) => `${prefix}${fmt.format(Math.round(v / 1000) * 1000)} ${currency}`);
 
   useEffect(() => {
     if (reduce) spring.jump(value);
@@ -54,10 +66,9 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
     mln >= 1000
       ? fillTemplate(pricing.volumeBln, { n: fmt.format(mln / 1000) })
       : fillTemplate(pricing.volumeMln, { n: fmt.format(mln) });
-  // The money line wraps an animated amount, so split the template around {sum}.
-  const [moneyBefore, moneyAfter] = pricing.moneyLine.split("{sum}");
   const sliderId = useId();
   const payoutsId = useId();
+  const bankId = useId();
   const industryName = useId();
   const industries = t.industries;
   // The industry sets the picture and the example task; the sliders stay the visitor's own numbers.
@@ -67,7 +78,11 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
   const [payoutStop, setPayoutStop] = useState<number>(pricing.defaultPayoutStop);
   const payouts = pricing.payoutStops[payoutStop];
   const hours = Math.round((payouts * pricing.minutesPerPayout) / 60);
-  const saved = Math.round((payouts * pricing.minutesPerPayout * pricing.hourlyCost) / 60);
+  // What payouts cost the company today: the bank's transfer fee plus accounting hours.
+  const [bankStop, setBankStop] = useState<number>(pricing.defaultBankStop);
+  const bankRate = pricing.bankStops[bankStop];
+  const bankFill = `${(bankStop / (pricing.bankStops.length - 1)) * 100}%`;
+  const workCost = Math.round((payouts * pricing.minutesPerPayout * pricing.hourlyCost) / 60);
   const payoutsFill = `${(payoutStop / (pricing.payoutStops.length - 1)) * 100}%`;
   const volume = pricing.stops[stop];
   const tierIndex = pricing.tiers.findIndex((tier) => volume <= tier.upTo);
@@ -75,6 +90,14 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
   const rate = custom ? null : pricing.tiers[tierIndex].rate;
   const fee = rate === null ? 0 : (volume * 1_000_000 * rate) / 100;
   const fill = `${(stop / (pricing.stops.length - 1)) * 100}%`;
+  const bankFee = (volume * 1_000_000 * bankRate) / 100;
+  // Bajar's commission replaces the card transfer fees, so the saving is today's costs minus it.
+  const savings = bankFee + workCost - fee;
+  const hoursText = (tpl: string) =>
+    fillTemplate(tpl, {
+      n: fmt.format(hours),
+      unit: plural.select(hours) === "one" ? pricing.hourOne : pricing.hourMany,
+    });
 
   return (
     <section id="pricing" aria-labelledby="pricing-title" className="pb-24 md:pb-36">
@@ -99,7 +122,7 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
                 return (
                   <label
                     key={it.id}
-                    className={`flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-4 py-2.5 text-[15px] font-medium whitespace-nowrap transition-colors duration-300 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-on-deep ${
+                    className={`flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-3.5 py-2.5 text-[14px] font-medium whitespace-nowrap transition-colors duration-300 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-on-deep ${
                       selected ? "bg-on-deep text-deep" : "bg-deep-2 text-on-deep-2 hover:text-on-deep"
                     }`}
                   >
@@ -111,7 +134,7 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
                       onChange={() => setIndustry(i)}
                       className="sr-only"
                     />
-                    <Icon size={20} weight={selected ? "fill" : "regular"} aria-hidden />
+                    <Icon size={18} weight={selected ? "fill" : "regular"} aria-hidden />
                     {it.name}
                   </label>
                 );
@@ -219,6 +242,27 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
                   style={{ "--fill": payoutsFill } as React.CSSProperties}
                 />
 
+                <div className="mt-8 flex flex-col gap-1">
+                  <label htmlFor={bankId} className="text-[15px] text-on-deep-2">
+                    {pricing.bankLabel}
+                  </label>
+                  <output htmlFor={bankId} className="text-[22px] font-semibold tracking-[-0.02em] tabular-nums">
+                    {fmt.format(bankRate)}%
+                  </output>
+                </div>
+                <input
+                  id={bankId}
+                  type="range"
+                  min={0}
+                  max={pricing.bankStops.length - 1}
+                  step={1}
+                  value={bankStop}
+                  onChange={(e) => setBankStop(Number(e.target.value))}
+                  aria-valuetext={`${fmt.format(bankRate)}%`}
+                  className="range mt-4"
+                  style={{ "--fill": bankFill } as React.CSSProperties}
+                />
+
                 <ul className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-4 md:grid-cols-2" aria-label={pricing.tiersLabel}>
                   {pricing.tiers.map((tier, i) => {
                     const on = !custom && i === tierIndex;
@@ -246,51 +290,74 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
               </div>
             </div>
 
-            {/* Result: two columns while it spans the full width, one column next to the sliders */}
+            {/* Result: the saving leads; the breakdown shows how it adds up */}
             <div
               className="grid grid-cols-1 gap-8 rounded-tile bg-deep-2 p-6 sm:p-8 md:col-span-2 md:grid-cols-2 md:gap-x-10 xl:col-span-1 xl:grid-cols-1"
               aria-live="polite"
             >
-              {custom ? (
-                <p className="text-[22px] leading-snug font-medium tracking-[-0.02em] text-balance">{pricing.customNote}</p>
-              ) : (
-                <dl className="grid content-start gap-7">
-                  <div>
-                    <dt className="flex items-center gap-2 text-[14px] text-on-deep-2">
-                      {pricing.feeLabel}
-                      <span className="rounded-full bg-accent px-2 py-0.5 text-[12px] font-semibold text-on-accent tabular-nums">
-                        {fmt.format(rate ?? 0)}%
-                      </span>
-                    </dt>
-                    <dd className="mt-2 text-[clamp(2rem,2.4vw,2.5rem)] leading-none font-semibold tracking-[-0.035em]">
-                      <AnimatedSum value={fee} fmt={fmt} currency={currency} />
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-[14px] text-on-deep-2">{pricing.totalLabel}</dt>
-                    <dd className="mt-1 text-[22px] font-semibold tracking-[-0.02em]">
-                      <AnimatedSum value={volume * 1_000_000 + fee} fmt={fmt} currency={currency} />
-                    </dd>
-                  </div>
-                </dl>
-              )}
-              <div className="border-t border-on-deep/15 pt-6 md:row-span-2 md:border-t-0 md:border-l md:pt-0 md:pl-10 xl:row-span-1 xl:border-t xl:border-l-0 xl:pt-6 xl:pl-0">
-                <p className="text-[14px] text-on-deep-2">{pricing.timeLabel}</p>
-                <p className="mt-1 text-[22px] font-semibold tracking-[-0.02em] tabular-nums">
-                  {fillTemplate(pricing.hoursLine, {
-                    n: fmt.format(hours),
-                    unit: plural.select(hours) === "one" ? pricing.hourOne : pricing.hourMany,
-                  })}
-                </p>
-                <p className="mt-2 text-[13px] leading-relaxed text-on-deep-2">{pricing.timeNote}</p>
-                <p className="mt-5 text-[14px] text-on-deep-2">{pricing.moneyLabel}</p>
-                <p className="mt-1 text-[22px] font-semibold tracking-[-0.02em]">
-                  {moneyBefore}
-                  <AnimatedSum value={saved} fmt={fmt} currency={currency} />
-                  {moneyAfter}
-                </p>
-                <p className="mt-2 text-[13px] leading-relaxed text-on-deep-2">{pricing.moneyNote}</p>
+              <div>
+                {custom ? (
+                  <p className="text-[22px] leading-snug font-medium tracking-[-0.02em] text-balance">{pricing.customNote}</p>
+                ) : savings > 0 ? (
+                  <>
+                    <p className="text-[15px] text-on-deep-2">{pricing.savingsLabel}</p>
+                    <p className="mt-2 text-[28px] leading-none font-semibold tracking-[-0.035em] sm:text-[36px] md:text-[32px] lg:text-[40px] xl:text-[clamp(2rem,2.4vw,2.6rem)]">
+                      <AnimatedSum value={savings} fmt={fmt} currency={currency} />
+                    </p>
+                    <p className="mt-3 text-[16px] leading-snug text-on-deep">{hoursText(pricing.hoursExtra)}</p>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-[15px] text-on-deep-2">{pricing.timeLabel}</p>
+                    <p className="mt-2 text-[28px] leading-tight font-semibold tracking-[-0.03em]">
+                      {hoursText(pricing.hoursLine)}
+                    </p>
+                    <p className="mt-3 text-[14px] leading-relaxed text-on-deep-2">{pricing.lowSavingsNote}</p>
+                  </>
+                )}
               </div>
+
+              <div className="border-t border-on-deep/15 pt-6 md:row-span-2 md:border-t-0 md:border-l md:pt-0 md:pl-10 xl:row-span-1 xl:border-t xl:border-l-0 xl:pt-6 xl:pl-0">
+                <dl className="grid gap-3 text-[14px]">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <dt className="text-on-deep-2">
+                      {pricing.nowBankLabel} · {fmt.format(bankRate)}%
+                    </dt>
+                    <dd className="shrink-0 font-medium">
+                      <AnimatedSum value={bankFee} fmt={fmt} currency={currency} />
+                    </dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <dt className="text-on-deep-2">
+                      {pricing.nowWorkLabel} · {fmt.format(hours)} {pricing.hourShort}
+                    </dt>
+                    <dd className="shrink-0 font-medium">
+                      <AnimatedSum value={workCost} fmt={fmt} currency={currency} />
+                    </dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <dt className="text-on-deep-2">
+                      {pricing.feeLabel}
+                      {!custom && <> · {fmt.format(rate ?? 0)}%</>}
+                    </dt>
+                    <dd className="shrink-0 font-medium">
+                      {custom ? pricing.customShort : <AnimatedSum value={fee} fmt={fmt} currency={currency} prefix="−" />}
+                    </dd>
+                  </div>
+                  {!custom && (
+                    <div className="mt-2 flex items-baseline justify-between gap-4 border-t border-on-deep/15 pt-4">
+                      <dt className="text-on-deep-2">{pricing.totalLabel}</dt>
+                      <dd className="shrink-0 font-medium">
+                        <AnimatedSum value={volume * 1_000_000 + fee} fmt={fmt} currency={currency} />
+                      </dd>
+                    </div>
+                  )}
+                </dl>
+                <p className="mt-5 text-[13px] leading-relaxed text-on-deep-2">
+                  {pricing.timeNote} {pricing.moneyNote}
+                </p>
+              </div>
+
               <Button href="#lead" variant="light" size="lg" className="w-full self-end sm:w-auto sm:justify-self-start">
                 {pricing.cta}
               </Button>

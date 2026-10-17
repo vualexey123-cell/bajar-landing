@@ -99,6 +99,15 @@ export function LeadForm({ t }: { t: Dict }) {
             </h2>
             <p className="mt-5 max-w-[40ch] text-[18px] leading-relaxed text-on-accent/85">{lead.text}</p>
 
+            <ul className="mt-8 grid gap-3">
+              {lead.benefits.map((b) => (
+                <li key={b} className="flex items-start gap-3 text-[16px] leading-snug">
+                  <CheckCircle size={22} weight="fill" className="mt-px shrink-0 text-on-accent" aria-hidden />
+                  {b}
+                </li>
+              ))}
+            </ul>
+
             <div className="mt-10 flex flex-wrap gap-3 lg:mt-auto lg:pt-10">
               <a
                 href={site.telegram}

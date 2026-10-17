@@ -255,6 +255,14 @@ export const ru = {
         text: "Видеографы, монтажёры и SMM-специалисты. Оплата за каждый ролик или публикацию.",
         task: { title: "Съёмка коротких видео", qty: "4 ролика", rate: "по 400 000 сум", total: "1 600 000 сум" },
       },
+      {
+        id: "other",
+        name: "Другое",
+        image: "/img/other.webp",
+        alt: "Исполнительница в светлом свитере смотрит в телефон",
+        text: "Фрилансеры, переводчики, консультанты, промоутеры и другие исполнители. Договор, акт и выплата по каждой задаче.",
+        task: { title: "Перевод документов", qty: "20 страниц", rate: "по 60 000 сум", total: "1 200 000 сум" },
+      },
     ],
   },
 
@@ -273,7 +281,7 @@ export const ru = {
     ],
     customLabel: "больше 1 млрд",
     customNote: "Для оборота больше 1 млрд сум в месяц ставку рассчитаем индивидуально.",
-    feeLabel: "Комиссия в месяц",
+    feeLabel: "Комиссия Bajar",
     totalLabel: "Итого к пополнению",
     cta: "Получить демо",
     tiersLabel: "Ставки по оборотам",
@@ -283,7 +291,6 @@ export const ru = {
     volumeMln: "{n} млн сум",
     volumeBln: "{n} млрд сум",
     hoursLine: "около {n} {unit} в месяц",
-    moneyLine: "около {sum} в месяц",
     // Genitive after "около": 1 часа, 21 часа, 5 часов
     hourOne: "часа",
     hourMany: "часов",
@@ -291,13 +298,22 @@ export const ru = {
     payoutStops: [10, 25, 50, 100, 200, 300, 500, 750, 1000, 1500, 2000],
     // 500 payouts on 100 mln sum: many small payouts, the typical delivery and retail case.
     defaultPayoutStop: 6,
+    // The visitor's bank fee for card transfers today, in percent. The 1% default is an assumption to confirm.
+    bankLabel: "Комиссия банка за переводы сейчас",
+    bankStops: [0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 2.5, 3],
+    defaultBankStop: 4,
     // Assumption shown to the visitor next to the estimate. Confirm with real customers.
     minutesPerPayout: 7,
     timeLabel: "Освободится у бухгалтерии",
     timeNote: "Оценка из расчёта 7 минут ручной работы на одну выплату: перевод, договор и акт.",
     // Value of that time: average Tashkent salary of about 12 mln sum over 168 working hours.
     hourlyCost: 71_000,
-    moneyLabel: "Экономия на работе бухгалтерии",
+    savingsLabel: "Вы экономите в месяц",
+    hoursExtra: "и около {n} {unit} работы бухгалтерии",
+    nowBankLabel: "Комиссия банка",
+    nowWorkLabel: "Работа бухгалтерии",
+    hourShort: "ч",
+    lowSavingsNote: "При редких и крупных выплатах главная выгода во времени бухгалтерии и порядке в документах. Ставку под такой объём подберём индивидуально.",
     moneyNote: "По средней зарплате в Ташкенте около 12 млн сум в месяц.",
   },
 
@@ -369,6 +385,13 @@ export const ru = {
   lead: {
     title: "Покажем Bajar на примере вашей компании",
     text: "Оставьте контакты, и менеджер покажет кабинет на ваших исполнителях. Удобнее переписываться? Напишите нам в Telegram.",
+    benefits: [
+      "Задачи, договоры, акты и выплаты в одном кабинете",
+      "Сотни выплат на Uzcard и Humo одним реестром",
+      "Статус исполнителя проверяется перед каждой выплатой",
+      "Документы подписываются с телефона или через E-IMZO",
+      "Подключение бесплатно, персональный менеджер на связи в Telegram",
+    ],
     fields: {
       name: "Ваше имя",
       company: "Компания",
