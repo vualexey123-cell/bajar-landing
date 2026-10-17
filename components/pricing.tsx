@@ -78,11 +78,16 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
   const [payoutStop, setPayoutStop] = useState<number>(pricing.defaultPayoutStop);
   const payouts = pricing.payoutStops[payoutStop];
   const hours = Math.round((payouts * pricing.minutesPerPayout) / 60);
-  // What payouts cost the company today: the bank's transfer fee plus accounting hours.
+  // What payouts cost the company today: the bank's transfer fee plus accountant salaries.
   const [bankStop, setBankStop] = useState<number>(pricing.defaultBankStop);
   const bankRate = pricing.bankStops[bankStop];
   const bankFill = `${(bankStop / (pricing.bankStops.length - 1)) * 100}%`;
-  const workCost = Math.round((payouts * pricing.minutesPerPayout * pricing.hourlyCost) / 60);
+  // Payouts take accountant time; count whole full-time accountants, each at a monthly salary.
+  const payoutsPerAccountant = Math.floor((pricing.accountantHours * 60) / pricing.minutesPerPayout);
+  const accountants = Math.ceil(payouts / payoutsPerAccountant);
+  const workCost = accountants * pricing.accountantSalary;
+  const accountantWord = (n: number) =>
+    pricing.accountantForms[plural.select(n) as keyof typeof pricing.accountantForms] ?? pricing.accountantForms.other;
   const payoutsFill = `${(payoutStop / (pricing.payoutStops.length - 1)) * 100}%`;
   const volume = pricing.stops[stop];
   const tierIndex = pricing.tiers.findIndex((tier) => volume <= tier.upTo);
@@ -304,7 +309,9 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
                     <p className="mt-2 text-[28px] leading-none font-semibold tracking-[-0.035em] sm:text-[36px] md:text-[32px] lg:text-[40px] xl:text-[clamp(2rem,2.4vw,2.6rem)]">
                       <AnimatedSum value={savings} fmt={fmt} currency={currency} />
                     </p>
-                    <p className="mt-3 text-[16px] leading-snug text-on-deep">{hoursText(pricing.hoursExtra)}</p>
+                    <p className="mt-3 text-[16px] leading-snug text-on-deep">
+                      {fillTemplate(pricing.staffExtra, { n: fmt.format(accountants), unit: accountantWord(accountants) })}
+                    </p>
                   </>
                 ) : (
                   <>
@@ -329,10 +336,7 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
                   </div>
                   <div className="flex items-baseline justify-between gap-4">
                     <dt className="text-on-deep-2">
-                      {pricing.nowWorkLabel}{" "}
-                      <span className="whitespace-nowrap">
-                        · {fmt.format(hours)} {pricing.hourShort}
-                      </span>
+                      {pricing.nowWorkLabel} <span className="whitespace-nowrap">× {fmt.format(accountants)}</span>
                     </dt>
                     <dd className="shrink-0 font-medium">
                       <AnimatedSum value={workCost} fmt={fmt} currency={currency} />
@@ -357,7 +361,7 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
                   )}
                 </dl>
                 <p className="mt-5 text-[13px] leading-relaxed text-on-deep-2">
-                  {pricing.timeNote} {pricing.moneyNote}
+                  {fillTemplate(pricing.timeNote, { n: fmt.format(payoutsPerAccountant) })} {pricing.moneyNote}
                 </p>
               </div>
 

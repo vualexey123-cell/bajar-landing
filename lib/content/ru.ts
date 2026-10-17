@@ -305,14 +305,17 @@ export const ru = {
     // Assumption shown to the visitor next to the estimate. Confirm with real customers.
     minutesPerPayout: 35,
     timeLabel: "Освободится у бухгалтерии",
-    timeNote: "Оценка из расчёта 35 минут ручной работы на одну выплату: перевод, договор и акт.",
-    // Value of that time: average Tashkent salary of about 12 mln sum over 168 working hours.
-    hourlyCost: 71_000,
+    timeNote: "Один бухгалтер на полной ставке успевает около {n} выплат в месяц, если на каждую уходит 35 минут: перевод, договор и акт.",
+    // A full-time accountant: 168 working hours and the average Tashkent salary of about 12 mln sum.
+    // Accountants needed = payouts / payouts one person handles a month, rounded up.
+    accountantHours: 168,
+    accountantSalary: 12_000_000,
     savingsLabel: "Вы экономите в месяц",
-    hoursExtra: "и около {n} {unit} работы бухгалтерии",
+    staffExtra: "и рабочее время {n} {unit}",
+    // Genitive after "время": 1 бухгалтера, 2 бухгалтеров, 5 бухгалтеров
+    accountantForms: { one: "бухгалтера", few: "бухгалтеров", many: "бухгалтеров", other: "бухгалтера" },
     nowBankLabel: "Комиссия банка",
-    nowWorkLabel: "Работа бухгалтерии",
-    hourShort: "ч",
+    nowWorkLabel: "Зарплата бухгалтера",
     lowSavingsNote: "При редких и крупных выплатах главная выгода во времени бухгалтерии и порядке в документах. Ставку под такой объём подберём индивидуально.",
     moneyNote: "По средней зарплате в Ташкенте около 12 млн сум в месяц.",
   },
