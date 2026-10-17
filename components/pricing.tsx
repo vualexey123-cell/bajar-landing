@@ -33,10 +33,20 @@ function fillTemplate(tpl: string, values: Record<string, string>) {
   return tpl.replace(/\{(\w+)\}/g, (_, k) => values[k] ?? "");
 }
 
-function AnimatedSum({ value, fmt, currency }: { value: number; fmt: Intl.NumberFormat; currency: string }) {
+function AnimatedSum({
+  value,
+  fmt,
+  currency,
+  prefix = "",
+}: {
+  value: number;
+  fmt: Intl.NumberFormat;
+  currency: string;
+  prefix?: string;
+}) {
   const reduce = useReducedMotion();
   const spring = useSpring(value, { stiffness: 140, damping: 26 });
-  const text = useTransform(spring, (v) => `${fmt.format(Math.round(v / 1000) * 1000)} ${currency}`);
+  const text = useTransform(spring, (v) => `${prefix}${fmt.format(Math.round(v / 1000) * 1000)} ${currency}`);
 
   useEffect(() => {
     if (reduce) spring.jump(value);
@@ -67,8 +77,7 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
   const [stop, setStop] = useState<number>(pricing.defaultStop);
   const [payoutStop, setPayoutStop] = useState<number>(pricing.defaultPayoutStop);
   const payouts = pricing.payoutStops[payoutStop];
-  const manualHours = (payouts * pricing.minutesPerPayout) / 60;
-  const hours = Math.max(1, Math.round(manualHours));
+  const hours = Math.round((payouts * pricing.minutesPerPayout) / 60);
   // What payouts cost the company today: the bank's transfer fee plus accountant salaries.
   const [bankStop, setBankStop] = useState<number>(pricing.defaultBankStop);
   const bankRate = pricing.bankStops[bankStop];
@@ -89,9 +98,11 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
   const bankFee = (volume * 1_000_000 * bankRate) / 100;
   // Bajar's commission replaces the card transfer fees, so the saving is today's costs minus it.
   const savings = bankFee + workCost - fee;
-  // Few payouts don't keep an accountant busy, so a whole salary would oversell the saving:
-  // then show what Bajar costs and the time it frees instead.
-  const small = !custom && (manualHours < pricing.accountantHours * pricing.smallLoad || savings <= 0);
+  const hoursText = (tpl: string) =>
+    fillTemplate(tpl, {
+      n: fmt.format(hours),
+      unit: plural.select(hours) === "one" ? pricing.hourOne : pricing.hourMany,
+    });
 
   return (
     <section id="pricing" aria-labelledby="pricing-title" className="pb-24 md:pb-36">
@@ -292,21 +303,7 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
               <div>
                 {custom ? (
                   <p className="text-[22px] leading-snug font-medium tracking-[-0.02em] text-balance">{pricing.customNote}</p>
-                ) : small ? (
-                  <>
-                    <p className="text-[15px] text-on-deep-2">{pricing.smallLabel}</p>
-                    <p className="mt-2 text-[28px] leading-none font-semibold tracking-[-0.035em] sm:text-[36px] md:text-[32px] lg:text-[40px] xl:text-[clamp(2rem,2.4vw,2.6rem)]">
-                      <AnimatedSum value={fee} fmt={fmt} currency={currency} />
-                    </p>
-                    <p className="mt-3 text-[16px] leading-snug text-on-deep">
-                      {fillTemplate(pricing.smallExtra, {
-                        minutes: fmt.format(pricing.bajarMinutes),
-                        n: fmt.format(hours),
-                        unit: plural.select(hours) === "one" ? pricing.hourOne : pricing.hourMany,
-                      })}
-                    </p>
-                  </>
-                ) : (
+                ) : savings > 0 ? (
                   <>
                     <p className="text-[15px] text-on-deep-2">{pricing.savingsLabel}</p>
                     <p className="mt-2 text-[28px] leading-none font-semibold tracking-[-0.035em] sm:text-[36px] md:text-[32px] lg:text-[40px] xl:text-[clamp(2rem,2.4vw,2.6rem)]">
@@ -315,6 +312,14 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
                     <p className="mt-3 text-[16px] leading-snug text-on-deep">
                       {fillTemplate(pricing.staffExtra, { n: fmt.format(accountants), unit: accountantWord(accountants) })}
                     </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-[15px] text-on-deep-2">{pricing.timeLabel}</p>
+                    <p className="mt-2 text-[28px] leading-tight font-semibold tracking-[-0.03em]">
+                      {hoursText(pricing.hoursLine)}
+                    </p>
+                    <p className="mt-3 text-[14px] leading-relaxed text-on-deep-2">{pricing.lowSavingsNote}</p>
                   </>
                 )}
               </div>
@@ -329,31 +334,21 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
                       <AnimatedSum value={bankFee} fmt={fmt} currency={currency} />
                     </dd>
                   </div>
-                  {!small && (
-                    <div className="flex items-baseline justify-between gap-4">
-                      <dt className="text-on-deep-2">
-                        {pricing.nowWorkLabel} <span className="whitespace-nowrap">× {fmt.format(accountants)}</span>
-                      </dt>
-                      <dd className="shrink-0 font-medium">
-                        <AnimatedSum value={workCost} fmt={fmt} currency={currency} />
-                      </dd>
-                    </div>
-                  )}
+                  <div className="flex items-baseline justify-between gap-4">
+                    <dt className="text-on-deep-2">
+                      {pricing.nowWorkLabel} <span className="whitespace-nowrap">× {fmt.format(accountants)}</span>
+                    </dt>
+                    <dd className="shrink-0 font-medium">
+                      <AnimatedSum value={workCost} fmt={fmt} currency={currency} />
+                    </dd>
+                  </div>
                   <div className="flex items-baseline justify-between gap-4">
                     <dt className="text-on-deep-2">
                       {pricing.feeLabel}
                       {!custom && <span className="whitespace-nowrap"> · {fmt.format(rate ?? 0)}%</span>}
                     </dt>
                     <dd className="shrink-0 font-medium">
-                      {custom ? (
-                        pricing.customShort
-                      ) : (
-                        <>
-                          {/* Subtracted from today's costs only when the saving is shown */}
-                          {!small && "−"}
-                          <AnimatedSum value={fee} fmt={fmt} currency={currency} />
-                        </>
-                      )}
+                      {custom ? pricing.customShort : <AnimatedSum value={fee} fmt={fmt} currency={currency} prefix="−" />}
                     </dd>
                   </div>
                   {!custom && (
@@ -366,9 +361,7 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
                   )}
                 </dl>
                 <p className="mt-5 text-[13px] leading-relaxed text-on-deep-2">
-                  {small
-                    ? pricing.smallNote
-                    : `${fillTemplate(pricing.timeNote, { n: fmt.format(payoutsPerAccountant) })} ${pricing.moneyNote}`}
+                  {fillTemplate(pricing.timeNote, { n: fmt.format(payoutsPerAccountant) })} {pricing.moneyNote}
                 </p>
               </div>
 
