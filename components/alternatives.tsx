@@ -6,8 +6,8 @@ import { Reveal } from "@/components/reveal";
 type Cell = { text: string; ok: boolean };
 
 function Mark({ ok, onDeep = false, strong = false }: { ok: boolean; onDeep?: boolean; strong?: boolean }) {
-  // The 20px icon is centred on the first text line (24px, or 28px in the totals row).
-  const offset = strong ? "mt-1" : "mt-0.5";
+  // The 20px icon is centred on the first 24px text line; the totals row centres it with flexbox.
+  const offset = strong ? "" : "mt-0.5";
   return ok ? (
     <CheckCircle
       size={20}
@@ -44,7 +44,9 @@ export function Alternatives() {
             className="grid gap-x-3"
             style={{
               gridTemplateColumns: `220px repeat(${columns.length}, minmax(0, 1fr))`,
-              gridTemplateRows: `auto repeat(${rows.length}, auto) 16px`,
+              // 1fr rows in an auto-height grid all grow to the tallest one, so every task row
+              // gets the same height and the gaps between "Задачи", "Договор"... are equal.
+              gridTemplateRows: `auto repeat(${rows.length}, 1fr) 16px`,
             }}
           >
             {columns.map((c, i) => (
@@ -68,12 +70,12 @@ export function Alternatives() {
 
             {rows.map((r, ri) => {
               const strong = ri === last;
-              const rowPad = strong ? "pt-5 pb-4" : "py-4";
+              const rowPad = "py-4";
               return (
                 <div key={r.topic} className="contents">
                   <p
                     className={`col-start-1 ${rowPad} pr-4 font-semibold tracking-[-0.01em] ${
-                      strong ? "text-[17px] leading-7" : "text-[16px] leading-6"
+                      strong ? "self-center text-[17px] leading-7" : "self-center text-[16px] leading-6"
                     }`}
                     style={{ gridRow: ri + 2 }}
                   >
@@ -86,8 +88,8 @@ export function Alternatives() {
                         key={ci}
                         className={`flex gap-3 px-7 ${rowPad} ${
                           strong
-                            ? "border-t text-[19px] leading-7 font-semibold tracking-[-0.01em]"
-                            : "text-[15px] leading-6"
+                            ? "items-center self-stretch border-t text-[19px] leading-7 font-semibold tracking-[-0.01em]"
+                            : "self-center text-[15px] leading-6"
                         } ${bajar ? "border-on-deep/15 text-on-deep" : "border-line text-ink-2"}`}
                         style={{ gridRow: ri + 2, gridColumn: ci + 2 }}
                       >
