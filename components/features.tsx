@@ -59,7 +59,7 @@ export function Features({ t }: { t: Dict }) {
   const tasks = f.tasks;
 
   return (
-    <section id="features" aria-labelledby="features-title" className="pb-24 md:pb-36">
+    <section id="features" aria-labelledby="features-title" className="pb-16 md:pb-20">
       <Container>
         <Reveal className="max-w-[760px]">
           <SectionTitle>

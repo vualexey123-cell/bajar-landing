@@ -4,7 +4,7 @@ import { Hero } from "@/components/hero";
 import { Alternatives } from "@/components/alternatives";
 import { HowItWorks } from "@/components/how-it-works";
 import { Features } from "@/components/features";
-import { Industries } from "@/components/industries";
+import { DemoCta } from "@/components/demo-cta";
 import { Contractors } from "@/components/contractors";
 import { Security } from "@/components/security";
 import { Pricing } from "@/components/pricing";
@@ -23,7 +23,7 @@ export function Home({ locale }: { locale: Locale }) {
         <Alternatives t={t} />
         <HowItWorks t={t} />
         <Features t={t} />
-        <Industries t={t} />
+        <DemoCta t={t} />
         <Contractors t={t} />
         <Security t={t} />
         <Pricing t={t} locale={locale} />

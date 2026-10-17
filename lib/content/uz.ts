@@ -201,11 +201,13 @@ export const uz: Dict = {
     ],
   },
 
+  demoCta: {
+    title: "Bajar’ni o‘z to‘lovlaringiz misolida ko‘ring",
+    text: "Hozir ijrochilarga qanday to‘layotganingizni ko‘rib chiqamiz, kabinetni sizning misolingizda ko‘rsatamiz va buxgalteriyada qancha vaqt bo‘shashini hisoblab beramiz.",
+  },
+
   industries: {
-    title: "Ijrochilar qancha ko‘p bo‘lsa, tejam shuncha sezilarli",
-    text: "Bajar eng ko‘p vaqtni to‘lovlar ko‘p va tez-tez bo‘ladigan joyda tejaydi: smena, buyurtma va topshiriq uchun.",
     taskLabel: "Topshiriq namunasi",
-    tabsLabel: "Sohalar",
     items: [
       {
         id: "delivery",
@@ -260,7 +262,8 @@ export const uz: Dict = {
 
   pricing: {
     title: "To‘lovlardan komissiya. Abonent to‘lovisiz",
-    text: "Ulanish, kabinet va qo‘llab-quvvatlash bepul. Aylanma o‘sgani sari stavka pasayadi.",
+    text: "Ulanish, kabinet va qo‘llab-quvvatlash bepul, aylanma o‘sgani sari stavka pasayadi. Sohani tanlang yoki o‘z hajmlaringizni kiriting.",
+    industryLabel: "Soha",
     sliderLabel: "Ijrochilarga oylik to‘lovlar summasi",
     stops: [5, 10, 20, 30, 50, 75, 100, 150, 200, 300, 500, 750, 1000, 1500, 2000],
     defaultStop: 6,
@@ -271,7 +274,6 @@ export const uz: Dict = {
     ],
     customLabel: "1 mlrd dan ortiq",
     customNote: "Oyiga 1 mlrd so‘mdan ortiq aylanma uchun stavkani alohida hisoblaymiz.",
-    rateLabel: "Stavka",
     feeLabel: "Oylik komissiya",
     totalLabel: "Jami to‘ldirish",
     cta: "Demo olish",
@@ -394,7 +396,6 @@ export const uz: Dict = {
           { label: "Nega Bajar", href: "#why" },
           { label: "Qanday ishlaydi", href: "#how" },
           { label: "Imkoniyatlar", href: "#features" },
-          { label: "Sohalar", href: "#industries" },
           { label: "Ijrochilarga", href: "#contractors" },
           { label: "Tariflar", href: "#pricing" },
           { label: "Savollar", href: "#faq" },

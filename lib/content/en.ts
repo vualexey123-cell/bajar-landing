@@ -200,11 +200,13 @@ export const en: Dict = {
     ],
   },
 
+  demoCta: {
+    title: "See Bajar on your own payouts",
+    text: "We will look at how you pay contractors today, walk you through the dashboard on your own case and estimate how much time your accounting team gets back.",
+  },
+
   industries: {
-    title: "The more contractors you have, the more you save",
-    text: "Bajar saves the most time where payouts are frequent and numerous: per shift, per order or per task.",
     taskLabel: "Example task",
-    tabsLabel: "Industries",
     items: [
       {
         id: "delivery",
@@ -259,7 +261,8 @@ export const en: Dict = {
 
   pricing: {
     title: "A commission on payouts. No subscription fee",
-    text: "Onboarding, the dashboard and support are free. The rate goes down as your volume grows.",
+    text: "Onboarding, the dashboard and support are free, and the rate goes down as your volume grows. Pick your industry or set your own numbers.",
+    industryLabel: "Industry",
     sliderLabel: "Monthly payouts to contractors",
     stops: [5, 10, 20, 30, 50, 75, 100, 150, 200, 300, 500, 750, 1000, 1500, 2000],
     defaultStop: 6,
@@ -270,7 +273,6 @@ export const en: Dict = {
     ],
     customLabel: "over 1B",
     customNote: "For volumes over UZS 1 billion a month, we will set the rate individually.",
-    rateLabel: "Rate",
     feeLabel: "Monthly commission",
     totalLabel: "Total top-up",
     cta: "Book a demo",
@@ -393,7 +395,6 @@ export const en: Dict = {
           { label: "Why Bajar", href: "#why" },
           { label: "How it works", href: "#how" },
           { label: "Features", href: "#features" },
-          { label: "Industries", href: "#industries" },
           { label: "For contractors", href: "#contractors" },
           { label: "Pricing", href: "#pricing" },
           { label: "FAQ", href: "#faq" },
