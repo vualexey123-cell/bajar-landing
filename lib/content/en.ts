@@ -84,12 +84,12 @@ export const en: Dict = {
       {
         topic: "Time for 100 payouts",
         cells: [
-          { text: "about 12 hours", ok: false },
+          { text: "about 58 hours", ok: false },
           { text: "under an hour", ok: true },
         ],
       },
     ],
-    note: "Time is an estimate: about 7 minutes of manual work per payout.",
+    note: "Time is an estimate: about 35 minutes of manual work per payout.",
   },
 
   features: {
@@ -298,9 +298,9 @@ export const en: Dict = {
     bankLabel: "Your bank's transfer fee today",
     bankStops: [0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 2.5, 3],
     defaultBankStop: 4,
-    minutesPerPayout: 7,
+    minutesPerPayout: 35,
     timeLabel: "Time freed up for accounting",
-    timeNote: "Estimated at 7 minutes of manual work per payout: transfer, contract and act.",
+    timeNote: "Estimated at 35 minutes of manual work per payout: transfer, contract and act.",
     hourlyCost: 71_000,
     savingsLabel: "You save per month",
     hoursExtra: "plus about {n} {unit} of accounting work",

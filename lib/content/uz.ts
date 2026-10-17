@@ -85,12 +85,12 @@ export const uz: Dict = {
       {
         topic: "100 ta to‘lovga vaqt",
         cells: [
-          { text: "taxminan 12 soat", ok: false },
+          { text: "taxminan 58 soat", ok: false },
           { text: "bir soatdan kam", ok: true },
         ],
       },
     ],
-    note: "Vaqt taxminiy: bitta to‘lovga taxminan 7 daqiqa qo‘l mehnati.",
+    note: "Vaqt taxminiy: bitta to‘lovga taxminan 35 daqiqa qo‘l mehnati.",
   },
 
   features: {
@@ -299,9 +299,9 @@ export const uz: Dict = {
     bankLabel: "Hozirgi bank o‘tkazmalari komissiyasi",
     bankStops: [0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 2.5, 3],
     defaultBankStop: 4,
-    minutesPerPayout: 7,
+    minutesPerPayout: 35,
     timeLabel: "Buxgalteriyada bo‘shaydigan vaqt",
-    timeNote: "Bitta to‘lovga 7 daqiqa qo‘l mehnati asosida hisoblangan: o‘tkazma, shartnoma va dalolatnoma.",
+    timeNote: "Bitta to‘lovga 35 daqiqa qo‘l mehnati asosida hisoblangan: o‘tkazma, shartnoma va dalolatnoma.",
     hourlyCost: 71_000,
     savingsLabel: "Oyiga tejaysiz",
     hoursExtra: "va buxgalteriyaning taxminan {n} {unit} ishi",

@@ -83,12 +83,12 @@ export const ru = {
       {
         topic: "Время на 100 выплат",
         cells: [
-          { text: "около 12 часов", ok: false },
+          { text: "около 58 часов", ok: false },
           { text: "меньше часа", ok: true },
         ],
       },
     ],
-    note: "Время указано по оценке: около 7 минут ручной работы на одну выплату.",
+    note: "Время указано по оценке: около 35 минут ручной работы на одну выплату.",
   },
 
   features: {
@@ -303,9 +303,9 @@ export const ru = {
     bankStops: [0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 2.5, 3],
     defaultBankStop: 4,
     // Assumption shown to the visitor next to the estimate. Confirm with real customers.
-    minutesPerPayout: 7,
+    minutesPerPayout: 35,
     timeLabel: "Освободится у бухгалтерии",
-    timeNote: "Оценка из расчёта 7 минут ручной работы на одну выплату: перевод, договор и акт.",
+    timeNote: "Оценка из расчёта 35 минут ручной работы на одну выплату: перевод, договор и акт.",
     // Value of that time: average Tashkent salary of about 12 mln sum over 168 working hours.
     hourlyCost: 71_000,
     savingsLabel: "Вы экономите в месяц",

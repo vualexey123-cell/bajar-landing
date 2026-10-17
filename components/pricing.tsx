@@ -321,7 +321,7 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
                 <dl className="grid gap-3 text-[14px]">
                   <div className="flex items-baseline justify-between gap-4">
                     <dt className="text-on-deep-2">
-                      {pricing.nowBankLabel} · {fmt.format(bankRate)}%
+                      {pricing.nowBankLabel} <span className="whitespace-nowrap">· {fmt.format(bankRate)}%</span>
                     </dt>
                     <dd className="shrink-0 font-medium">
                       <AnimatedSum value={bankFee} fmt={fmt} currency={currency} />
@@ -329,7 +329,10 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
                   </div>
                   <div className="flex items-baseline justify-between gap-4">
                     <dt className="text-on-deep-2">
-                      {pricing.nowWorkLabel} · {fmt.format(hours)} {pricing.hourShort}
+                      {pricing.nowWorkLabel}{" "}
+                      <span className="whitespace-nowrap">
+                        · {fmt.format(hours)} {pricing.hourShort}
+                      </span>
                     </dt>
                     <dd className="shrink-0 font-medium">
                       <AnimatedSum value={workCost} fmt={fmt} currency={currency} />
@@ -338,7 +341,7 @@ export function Pricing({ t, locale }: { t: Dict; locale: Locale }) {
                   <div className="flex items-baseline justify-between gap-4">
                     <dt className="text-on-deep-2">
                       {pricing.feeLabel}
-                      {!custom && <> · {fmt.format(rate ?? 0)}%</>}
+                      {!custom && <span className="whitespace-nowrap"> · {fmt.format(rate ?? 0)}%</span>}
                     </dt>
                     <dd className="shrink-0 font-medium">
                       {custom ? pricing.customShort : <AnimatedSum value={fee} fmt={fmt} currency={currency} prefix="−" />}
