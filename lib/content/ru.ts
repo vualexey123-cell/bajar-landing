@@ -287,11 +287,10 @@ export const ru = {
     tiersLabel: "Ставки по оборотам",
     customShort: "Инд.",
     payoutsUnit: "выплат",
-    // {n} is the number, {unit} the word for hours, {sum} the amount with currency.
+    // {n} is a number, {unit} the word that goes with it.
     volumeMln: "{n} млн сум",
     volumeBln: "{n} млрд сум",
-    hoursLine: "около {n} {unit} в месяц",
-    // Genitive after "около": 1 часа, 21 часа, 5 часов
+    // Genitive after "вместо": 1 часа, 21 часа, 5 часов
     hourOne: "часа",
     hourMany: "часов",
     payoutsLabel: "Выплат исполнителям в месяц",
@@ -304,7 +303,6 @@ export const ru = {
     defaultBankStop: 4,
     // Assumption shown to the visitor next to the estimate. Confirm with real customers.
     minutesPerPayout: 35,
-    timeLabel: "Освободится у бухгалтерии",
     timeNote: "Один бухгалтер на полной ставке успевает около {n} выплат в месяц, если на каждую уходит 35 минут: перевод, договор и акт.",
     // A full-time accountant: 168 working hours and the average Tashkent salary of about 12 mln sum.
     // Accountants needed = payouts / payouts one person handles a month, rounded up.
@@ -316,7 +314,14 @@ export const ru = {
     accountantForms: { one: "бухгалтера", few: "бухгалтеров", many: "бухгалтеров", other: "бухгалтера" },
     nowBankLabel: "Комиссия банка",
     nowWorkLabel: "Зарплата бухгалтера",
-    lowSavingsNote: "При редких и крупных выплатах главная выгода во времени бухгалтерии и порядке в документах. Ставку под такой объём подберём индивидуально.",
+    // Below this share of one full-time accountant a whole salary would be a stretch,
+    // so the result shows the commission and the time saved instead.
+    smallLoad: 0.5,
+    // Time the company still spends with Bajar: check and approve the registry.
+    bajarMinutes: 15,
+    smallLabel: "Комиссия Bajar в месяц",
+    smallExtra: "за {minutes} минут вашего времени вместо {n} {unit} ручной работы",
+    smallNote: "Ручная работа оценена в 35 минут на выплату: перевод, договор и акт. С Bajar остаётся проверить и подтвердить реестр.",
     moneyNote: "По средней зарплате в Ташкенте около 12 млн сум в месяц.",
   },
 
