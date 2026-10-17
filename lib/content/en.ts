@@ -37,7 +37,6 @@ export const en: Dict = {
   },
 
   hero: {
-    chip: "A platform for working with contractors",
     title: "Simple, fast and legal payouts to sole traders, self-employed and individuals",
     text: "Contracts, acts and payouts to Uzcard and Humo cards are handled for you. Accounting only approves the registry.",
   },

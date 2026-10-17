@@ -38,7 +38,6 @@ export const uz: Dict = {
   },
 
   hero: {
-    chip: "Ijrochilar bilan ishlash platformasi",
     title: "YaTT, o‘zini o‘zi band qilganlar va jismoniy shaxslarga oddiy, tez va qonuniy to‘lovlar",
     text: "Shartnoma, dalolatnoma va Uzcard hamda Humo kartalariga to‘lov o‘zi tayyorlanadi. Buxgalteriya faqat reestrni tasdiqlaydi.",
   },
