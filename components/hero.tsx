@@ -7,13 +7,13 @@ export function Hero() {
   return (
     <section id="top" className="relative pt-[104px] pb-20 md:pt-[120px] md:pb-28">
       <Container>
-        <div className="max-w-[1040px]">
+        <div className="max-w-[1180px]">
           <p className="rise inline-flex items-center gap-2 rounded-full bg-accent-soft px-3.5 py-1.5 text-[14px] font-medium text-accent-text">
             <SealCheck size={17} weight="fill" aria-hidden />
             {hero.chip}
           </p>
           <h1
-            className="rise mt-6 text-[clamp(2.5rem,4.9vw,4.4rem)] font-semibold leading-[1] tracking-[-0.045em] text-balance"
+            className="rise mt-6 text-[clamp(2.4rem,4.4vw,4rem)] font-semibold leading-[1.02] tracking-[-0.045em] text-balance"
             style={{ animationDelay: "80ms" }}
           >
             {hero.title}

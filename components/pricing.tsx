@@ -34,6 +34,7 @@ export function Pricing() {
   const [payoutStop, setPayoutStop] = useState<number>(pricing.defaultPayoutStop);
   const payouts = pricing.payoutStops[payoutStop];
   const hours = Math.round((payouts * pricing.minutesPerPayout) / 60);
+  const saved = Math.round((payouts * pricing.minutesPerPayout * pricing.hourlyCost) / 60);
   const payoutsFill = `${(payoutStop / (pricing.payoutStops.length - 1)) * 100}%`;
   const volume = pricing.stops[stop];
   const tierIndex = pricing.tiers.findIndex((t) => volume <= t.upTo);
@@ -154,6 +155,11 @@ export function Pricing() {
                 около {fmt.format(hours)} {hours % 10 === 1 && hours % 100 !== 11 ? "часа" : "часов"} в месяц
               </p>
               <p className="mt-2 text-[13px] leading-relaxed text-on-deep-2">{pricing.timeNote}</p>
+              <p className="mt-5 text-[14px] text-on-deep-2">{pricing.moneyLabel}</p>
+              <p className="mt-1 text-[22px] font-semibold tracking-[-0.02em]">
+                около <AnimatedSum value={saved} /> в месяц
+              </p>
+              <p className="mt-2 text-[13px] leading-relaxed text-on-deep-2">{pricing.moneyNote}</p>
             </div>
             <Button href="#lead" variant="light" size="lg" className="w-full sm:w-auto sm:self-start">
               {pricing.cta}

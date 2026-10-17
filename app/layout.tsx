@@ -18,13 +18,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: `${site.name}: выплаты самозанятым в Узбекистане`,
+  title: `${site.name}: выплаты ИП, самозанятым и физлицам в Узбекистане`,
   description:
-    "Договоры, акты, чеки и выплаты исполнителям на Uzcard и Humo в одном кабинете. Платформа для компаний, которые работают с самозанятыми.",
+    "Задачи, договоры, акты и выплаты исполнителям на Uzcard и Humo в одном кабинете. Для компаний, которые работают с ИП, самозанятыми и физлицами.",
   openGraph: {
-    title: `${site.name}: выплаты самозанятым без бумажной рутины`,
+    title: `${site.name}: простые, быстрые и легальные выплаты исполнителям`,
     description:
-      "Договоры, акты, чеки и выплаты исполнителям на Uzcard и Humo в одном кабинете.",
+      "Задачи, договоры, акты и выплаты на Uzcard и Humo в одном кабинете.",
     locale: "ru_RU",
     type: "website",
     // Resolved against metadataBase, which already includes the base path.

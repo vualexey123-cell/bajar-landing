@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CreditCard, FileText, Receipt, Signature } from "@phosphor-icons/react/dist/ssr";
+import { CreditCard, FileText, Headset, Signature } from "@phosphor-icons/react/dist/ssr";
 import { contractors } from "@/lib/content";
 import { asset } from "@/lib/site";
 import { Container, SectionTitle } from "@/components/ui";
@@ -8,7 +8,7 @@ import { Reveal } from "@/components/reveal";
 const icons = {
   signature: Signature,
   card: CreditCard,
-  receipt: Receipt,
+  support: Headset,
   document: FileText,
 } as const;
 

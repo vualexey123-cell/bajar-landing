@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Code, Files, LinkSimple, Wallet } from "@phosphor-icons/react/dist/ssr";
+import { Code, Files, Headset, LinkSimple, TelegramLogo, Wallet } from "@phosphor-icons/react/dist/ssr";
 import { features } from "@/lib/content";
 import { asset } from "@/lib/site";
 import { Container, SectionTitle } from "@/components/ui";
@@ -106,8 +106,8 @@ export function Features() {
             </div>
           </Reveal>
 
-          {/* API: full-width row, text left and request sample right */}
-          <Reveal className="grid grid-cols-1 items-center gap-8 rounded-card bg-deep p-6 text-on-deep sm:p-8 lg:col-span-12 lg:grid-cols-[1fr_1.1fr] lg:gap-14 lg:p-10">
+          {/* API */}
+          <Reveal className="flex flex-col justify-between gap-8 rounded-card bg-deep p-6 text-on-deep sm:p-8 lg:col-span-7">
             <CellHead icon={Code} title={f.api.title} text={f.api.text} tone="deep" />
             <pre className="overflow-x-auto rounded-tile bg-deep-2 p-5 font-mono text-[13px] leading-[1.7] text-on-deep-2">
               <code>
@@ -120,6 +120,29 @@ export function Features() {
                 {"}"}
               </code>
             </pre>
+          </Reveal>
+
+          {/* Dedicated manager: text left, portrait right */}
+          <Reveal
+            delay={0.05}
+            className="grid grid-cols-1 overflow-hidden rounded-card bg-surface sm:grid-cols-[minmax(0,1fr)_200px] lg:col-span-5"
+          >
+            <div className="flex flex-col justify-between gap-8 p-6 sm:p-8">
+              <CellHead icon={Headset} title={f.manager.title} text={f.manager.text} />
+              <p className="inline-flex items-center gap-2 text-[14px] font-medium text-accent-text">
+                <TelegramLogo size={18} weight="fill" aria-hidden />
+                {f.manager.status}
+              </p>
+            </div>
+            <div className="relative order-first min-h-[280px] bg-[#4563a6] sm:order-none sm:min-h-0">
+              <Image
+                src={asset(f.manager.image)}
+                alt={f.manager.alt}
+                fill
+                sizes="(min-width: 640px) 200px, 92vw"
+                className="object-cover object-[50%_22%]"
+              />
+            </div>
           </Reveal>
         </div>
       </Container>
