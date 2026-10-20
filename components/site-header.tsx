@@ -4,35 +4,77 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { List, X } from "@phosphor-icons/react";
-import { localeHome, localeLabel, locales, htmlLang, type Dict, type Locale } from "@/lib/i18n";
+import { htmlLang, localeLabel, locales, pagePath, type Dict, type Locale, type Page } from "@/lib/i18n";
 import { Button, Container, Logo } from "@/components/ui";
 
-function LanguageSwitch({ t, locale }: { t: Dict; locale: Locale }) {
+type NavItem = { label: string; href: string };
+
+// Thin bar above the header: product tabs on the left, language on the right.
+function TopBar({ t, locale, page }: { t: Dict; locale: Locale; page: Page }) {
+  const products: { page: Page; label: string }[] = [
+    { page: "home", label: t.ui.productPayouts },
+    { page: "jobs", label: t.ui.productJobs },
+  ];
   return (
-    <nav aria-label={t.ui.language}>
-      <ul className="flex items-center rounded-full bg-surface-2 p-1">
-        {locales.map((l) => (
-          <li key={l}>
-            <Link
-              href={localeHome[l]}
-              hrefLang={htmlLang[l]}
-              lang={htmlLang[l]}
-              aria-current={l === locale ? "page" : undefined}
-              className={`block rounded-full px-2.5 py-1.5 text-[13px] font-medium transition-colors ${
-                l === locale ? "bg-bg text-ink shadow-sm" : "text-ink-2 hover:text-ink"
-              }`}
-            >
-              {localeLabel[l]}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <Container className="flex h-9 items-center justify-between gap-4">
+      <nav aria-label={t.ui.products} className="h-full">
+        <ul className="flex h-full items-center gap-5">
+          {products.map((p) => {
+            const active = p.page === page;
+            return (
+              <li key={p.page} className="h-full">
+                <Link
+                  href={pagePath(locale, p.page)}
+                  aria-current={active ? "page" : undefined}
+                  className={`relative flex h-full items-center text-[13px] font-medium transition-colors ${
+                    active ? "text-ink" : "text-ink-2 hover:text-ink"
+                  }`}
+                >
+                  {p.label}
+                  {active && <span aria-hidden className="absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-accent" />}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+
+      <nav aria-label={t.ui.language}>
+        <ul className="flex items-center gap-1">
+          {locales.map((l) => (
+            <li key={l}>
+              <Link
+                href={pagePath(l, page)}
+                hrefLang={htmlLang[l]}
+                lang={htmlLang[l]}
+                aria-current={l === locale ? "page" : undefined}
+                className={`block rounded-full px-2 py-1 text-[13px] font-medium transition-colors ${
+                  l === locale ? "bg-surface-2 text-ink" : "text-ink-2 hover:text-ink"
+                }`}
+              >
+                {localeLabel[l]}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </Container>
   );
 }
 
-export function SiteHeader({ t, locale }: { t: Dict; locale: Locale }) {
-  const { cta, nav } = t;
+export function SiteHeader({
+  t,
+  locale,
+  page = "home",
+  nav = t.nav,
+  ctaLabel = t.cta.primary,
+}: {
+  t: Dict;
+  locale: Locale;
+  page?: Page;
+  nav?: NavItem[];
+  ctaLabel?: string;
+}) {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -62,6 +104,10 @@ export function SiteHeader({ t, locale }: { t: Dict; locale: Locale }) {
             : "border-transparent bg-transparent"
         }`}
       >
+        <div className="border-b border-line/70">
+          <TopBar t={t} locale={locale} page={page} />
+        </div>
+
         <Container className="flex h-[72px] items-center justify-between gap-6">
           <Link href="#top" aria-label={t.ui.home} onClick={() => setOpen(false)}>
             <Logo />
@@ -83,9 +129,8 @@ export function SiteHeader({ t, locale }: { t: Dict; locale: Locale }) {
           </nav>
 
           <div className="flex items-center gap-2">
-            <LanguageSwitch t={t} locale={locale} />
             <div className="hidden sm:block">
-              <Button href="#lead">{cta.primary}</Button>
+              <Button href="#lead">{ctaLabel}</Button>
             </div>
             <button
               type="button"
@@ -110,7 +155,7 @@ export function SiteHeader({ t, locale }: { t: Dict; locale: Locale }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="h-[calc(100dvh-72px)] overflow-y-auto border-b border-line bg-bg/95 backdrop-blur-xl lg:hidden"
+            className="h-[calc(100dvh-108px)] overflow-y-auto border-b border-line bg-bg/95 backdrop-blur-xl lg:hidden"
           >
             <Container className="flex flex-col gap-1 py-6">
               {nav.map((item, i) => (
@@ -131,7 +176,7 @@ export function SiteHeader({ t, locale }: { t: Dict; locale: Locale }) {
               ))}
               <div className="mt-6" onClick={() => setOpen(false)}>
                 <Button href="#lead" size="lg" className="w-full">
-                  {cta.primary}
+                  {ctaLabel}
                 </Button>
               </div>
             </Container>

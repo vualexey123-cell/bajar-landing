@@ -12,6 +12,9 @@ export const uz: Dict = {
     ogLocale: "uz_UZ",
   },
   ui: {
+    products: "Bajar mahsulotlari",
+    productPayouts: "To‘lovlar",
+    productJobs: "Qo‘shimcha ish",
     home: "Bajar, bosh sahifa",
     mainNav: "Asosiy navigatsiya",
     openMenu: "Menyuni ochish",
@@ -420,6 +423,7 @@ export const uz: Dict = {
           { label: "Qanday ishlaydi", href: "#how" },
           { label: "Imkoniyatlar", href: "#features" },
           { label: "Ijrochilarga", href: "#contractors" },
+          { label: "Qo‘shimcha ishlar birjasi", href: "@jobs" },
           { label: "Tariflar", href: "#pricing" },
           { label: "Savollar", href: "#faq" },
         ],

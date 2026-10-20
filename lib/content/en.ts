@@ -11,6 +11,9 @@ export const en: Dict = {
     ogLocale: "en_US",
   },
   ui: {
+    products: "Bajar products",
+    productPayouts: "Payouts",
+    productJobs: "Gigs",
     home: "Bajar, home",
     mainNav: "Main navigation",
     openMenu: "Open menu",
@@ -419,6 +422,7 @@ export const en: Dict = {
           { label: "How it works", href: "#how" },
           { label: "Features", href: "#features" },
           { label: "For contractors", href: "#contractors" },
+          { label: "Gig marketplace", href: "@jobs" },
           { label: "Pricing", href: "#pricing" },
           { label: "FAQ", href: "#faq" },
         ],

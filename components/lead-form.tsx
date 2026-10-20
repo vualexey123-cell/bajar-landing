@@ -23,8 +23,8 @@ function formatPhone(raw: string) {
 const inputBase =
   "h-13 w-full rounded-chip border bg-bg px-4 text-[16px] text-ink transition-colors duration-200 placeholder:text-ink-2 focus:border-accent focus:outline-none focus-visible:outline-none";
 
-export function LeadForm({ t }: { t: Dict }) {
-  const { lead } = t;
+// `source` tells the sales team which page the request came from.
+export function LeadForm({ lead, source = "landing" }: { lead: Dict["lead"]; source?: string }) {
   const uid = useId();
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Errors>({});
@@ -52,7 +52,7 @@ export function LeadForm({ t }: { t: Dict }) {
     }
 
     setStatus("submitting");
-    const payload = { name, company, phone: `+${digits}`, contractors: size, source: "landing" };
+    const payload = { name, company, phone: `+${digits}`, contractors: size, source };
     try {
       if (site.leadEndpoint) {
         const res = await fetch(site.leadEndpoint, {

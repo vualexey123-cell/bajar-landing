@@ -1,10 +1,16 @@
 import Link from "next/link";
-import type { Dict } from "@/lib/i18n";
+import { pagePath, type Dict, type Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import { Container, Logo } from "@/components/ui";
 
-export function SiteFooter({ t }: { t: Dict }) {
+export function SiteFooter({ t, locale }: { t: Dict; locale: Locale }) {
   const { footer } = t;
+  // Section anchors point at the payouts page so they work from the gig page too.
+  const resolve = (href: string) => {
+    if (href === "@jobs") return pagePath(locale, "jobs");
+    if (href.startsWith("#") && href.length > 1) return `${pagePath(locale, "home")}${href}`;
+    return href;
+  };
   return (
     <footer className="pt-10 pb-12">
       <Container>
@@ -20,7 +26,7 @@ export function SiteFooter({ t }: { t: Dict }) {
               <ul className="mt-4 flex flex-col gap-3">
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    <Link href={l.href} className="text-[15px] text-ink-2 transition-colors hover:text-ink">
+                    <Link href={resolve(l.href)} className="text-[15px] text-ink-2 transition-colors hover:text-ink">
                       {l.label}
                     </Link>
                   </li>

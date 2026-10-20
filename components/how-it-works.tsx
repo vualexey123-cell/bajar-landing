@@ -8,8 +8,7 @@ import { Reveal } from "@/components/reveal";
 
 // The rail fills as the section scrolls through the viewport, so the reader
 // sees how far along the flow they are.
-export function HowItWorks({ t }: { t: Dict }) {
-  const { steps } = t;
+export function HowItWorks({ steps }: { steps: Dict["steps"] }) {
   const ref = useRef<HTMLOListElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 75%", "end 55%"] });
   const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 30, restDelta: 0.001 });

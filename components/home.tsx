@@ -21,16 +21,16 @@ export function Home({ locale }: { locale: Locale }) {
       <main>
         <Hero t={t} />
         <Alternatives t={t} />
-        <HowItWorks t={t} />
+        <HowItWorks steps={t.steps} />
         <Features t={t} />
         <DemoCta t={t} />
         <Contractors t={t} />
         <Security t={t} />
         <Pricing t={t} locale={locale} />
-        <Faq t={t} />
-        <LeadForm t={t} />
+        <Faq faq={t.faq} />
+        <LeadForm lead={t.lead} />
       </main>
-      <SiteFooter t={t} />
+      <SiteFooter t={t} locale={locale} />
     </>
   );
 }

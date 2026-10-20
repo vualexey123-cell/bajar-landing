@@ -9,6 +9,9 @@ export const ru = {
     ogLocale: "ru_RU",
   },
   ui: {
+    products: "Продукты Bajar",
+    productPayouts: "Выплаты",
+    productJobs: "Подработка",
     home: "Bajar, на главную",
     mainNav: "Основная навигация",
     openMenu: "Открыть меню",
@@ -428,6 +431,7 @@ export const ru = {
           { label: "Как это работает", href: "#how" },
           { label: "Возможности", href: "#features" },
           { label: "Исполнителям", href: "#contractors" },
+          { label: "Биржа подработок", href: "@jobs" },
           { label: "Тарифы", href: "#pricing" },
           { label: "Вопросы", href: "#faq" },
         ],

@@ -3,8 +3,7 @@ import type { Dict } from "@/lib/i18n";
 import { Container, SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
 
-export function Faq({ t }: { t: Dict }) {
-  const { faq } = t;
+export function Faq({ faq }: { faq: Dict["faq"] }) {
   return (
     <section id="faq" aria-labelledby="faq-title" className="pb-24 md:pb-36">
       <Container className="max-w-[880px]">
