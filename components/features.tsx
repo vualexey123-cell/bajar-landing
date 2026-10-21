@@ -16,7 +16,8 @@ import { Container, SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
 import { PayoutFeed } from "@/components/payout-feed";
 
-function CellHead({
+// Icon, title and text at the top of a bento cell. Shared with the gig page.
+export function CellHead({
   icon: Icon,
   title,
   text,

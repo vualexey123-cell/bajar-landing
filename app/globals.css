@@ -43,6 +43,87 @@
   }
 }
 
+/* Warm palette for the contractor-facing parts of the gig page: cream and
+   saffron, the complement of the cobalt brand colour. Components keep using
+   the same utilities (bg-accent, bg-surface...), the tokens change under them. */
+.theme-worker {
+  --bg: #f6f1e8;
+  --surface: #fffbf4;
+  --surface-2: #eee5d6;
+  --ink: #1f1a14;
+  --ink-2: #6b6052;
+  --line: #e4d9c8;
+  --accent: #f4a51c;
+  --accent-hover: #f6b23f;
+  --on-accent: #1f1a14;
+  --accent-soft: #fbe7bd;
+  --accent-text: #93570a;
+  --deep: #221c14;
+  --deep-2: #30281d;
+  --on-deep: #fbf4ea;
+  --on-deep-2: #cdbca6;
+  --shadow-tint: 32 45% 18%;
+}
+
+/* Puts the brand palette back inside a warm section, e.g. a card for companies. */
+.theme-brand {
+  --bg: #f3f4f7;
+  --surface: #fbfbfd;
+  --surface-2: #e9ecf2;
+  --ink: #0e1220;
+  --ink-2: #525a6b;
+  --line: #dce0e8;
+  --accent: #2f55d4;
+  --accent-hover: #2647b8;
+  --on-accent: #f7f8fb;
+  --accent-soft: #e2e8fb;
+  --accent-text: #2f55d4;
+  --deep: #0e1220;
+  --deep-2: #1a2238;
+  --on-deep: #eef0f5;
+  --on-deep-2: #a9b4cc;
+  --shadow-tint: 225 45% 22%;
+}
+
+@media (prefers-color-scheme: dark) {
+  .theme-worker {
+    --bg: #14110d;
+    --surface: #1d1813;
+    --surface-2: #29221a;
+    --ink: #f6eee3;
+    --ink-2: #b8a891;
+    --line: #342b20;
+    --accent: #f4a51c;
+    --accent-hover: #f6b23f;
+    --on-accent: #1f1a14;
+    --accent-soft: #3a2c14;
+    --accent-text: #f8c25c;
+    --deep: #241d15;
+    --deep-2: #342a1e;
+    --on-deep: #fbf4ea;
+    --on-deep-2: #cdbca6;
+    --shadow-tint: 30 50% 3%;
+  }
+  .theme-brand {
+    --bg: #0b0e16;
+    --surface: #121725;
+    --surface-2: #1a2030;
+    --ink: #eef0f5;
+    --ink-2: #9aa3b5;
+    --line: #252c3d;
+    --accent: #3a5fe0;
+    --accent-hover: #4a6dea;
+    --on-accent: #f7f8fb;
+    --accent-soft: #1b2547;
+    --accent-text: #8fa6ff;
+    --deep: #141a2a;
+    --deep-2: #1f2840;
+    --on-deep: #eef0f5;
+    --on-deep-2: #a9b4cc;
+    --shadow-tint: 228 60% 3%;
+  }
+}
+
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);

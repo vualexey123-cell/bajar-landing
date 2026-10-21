@@ -2,134 +2,223 @@ import type { JobsDict } from "@/lib/content/jobs/ru";
 
 export const jobsEn: JobsDict = {
   meta: {
-    title: "Bajar Gigs: contractors for shifts and tasks in Uzbekistan",
+    title: "Bajar Gigs: shifts and tasks near home",
     description:
-      "A temporary work marketplace: companies find vetted contractors for shifts, tasks and seasonal peaks, and people find side jobs near home, paid to their card.",
-    ogTitle: "Bajar Gigs: shifts and tasks paid to your card",
-    ogDescription: "Companies find contractors for shifts and tasks, people find side jobs near home.",
+      "Side jobs near home, paid to your Uzcard or Humo card. Companies find contractors for shifts and tasks, with the contract, act and payout handled for them.",
+    ogTitle: "Bajar Gigs: shifts near home, paid to your card",
+    ogDescription: "Contractors find side jobs near home, companies find people for their shifts.",
   },
 
   nav: [
-    { label: "How it works", href: "#how" },
+    { label: "Gigs", href: "#gigs" },
+    { label: "How to start", href: "#how" },
     { label: "For companies", href: "#business" },
-    { label: "For contractors", href: "#workers" },
     { label: "FAQ", href: "#faq" },
   ],
 
-  cta: {
-    primary: "Post a gig",
-    soft: "I'm looking for work",
-  },
+  cta: { primary: "Post a gig" },
 
   hero: {
-    title: "Contractors for a shift, a task or a season",
-    text: "Post a gig and vetted contractors near your site will see it. The contract, the act and the card payout are handled for you.",
-    imageAlt: "Contractor holding a box of products",
-    feedLabel: "Gigs nearby",
-    apply: "Apply",
-    perShift: "per shift",
-    items: [
-      { title: "Order picker", place: "Warehouse, Sergeli", time: "Today, 18:00–23:00", pay: "180,000" },
-      { title: "Promoter at a mall", place: "Chilanzar", time: "Sat, 10:00–16:00", pay: "150,000" },
-      { title: "Banquet waiter", place: "Mirabad", time: "Fri, 17:00–23:00", pay: "250,000" },
+    title: "Side jobs near home, paid to your card",
+    text: "Shifts and one-off tasks from companies in your district. You pick the time, and the contract, act and payout are handled in the app.",
+    chips: ["Up to 260,000 UZS a shift", "No experience needed", "Shifts from 4 hours", "Paid to Uzcard and Humo"],
+    primary: "See gigs",
+    soft: "I'm hiring",
+    photos: [
+      { src: "/img/courier.webp", alt: "Courier with an insulated bag looking at his phone" },
+      { src: "/img/retail.webp", alt: "Contractor holding a box of products" },
+      { src: "/img/builder.webp", alt: "Handyman holding a power drill" },
+      { src: "/img/tutor.webp", alt: "Contractor holding notebooks" },
     ],
-    toast: "Shift accepted, 180,000 UZS on the card",
+    phone: {
+      title: "Gigs nearby",
+      location: "Chilanzar",
+      filters: ["Today", "Evening", "No experience"],
+      perShift: "per shift",
+      items: [
+        { title: "Order picker", meta: "Warehouse, Sergeli · 18:00–23:00", pay: "180,000" },
+        { title: "Promoter", meta: "Shopping mall · 10:00–16:00", pay: "150,000" },
+        { title: "Banquet waiter", meta: "Restaurant, Mirabad · 17:00–23:00", pay: "250,000" },
+        { title: "Office cleaning", meta: "Business center · 19:00–23:00", pay: "130,000" },
+      ],
+    },
+  },
+
+  teaser: {
+    title: "Looking for people for your shifts?",
+    text: "Post a gig and contractors near your site will see it. The contract, act and payout are handled for you.",
+    cta: "For companies",
+  },
+
+  benefits: {
+    title: "Gigs, documents and payouts in one app",
+    map: {
+      title: "Gigs near home",
+      text: "Filter by district, day and type of work. Pay, address and length are visible before you apply.",
+      pins: ["180,000", "150,000", "250,000", "130,000", "220,000"],
+    },
+    payout: {
+      title: "Paid to your card",
+      text: "The company accepts the work, the act is generated automatically and the money goes to your Uzcard or Humo card.",
+      items: [
+        { amount: "+180,000", card: "Humo •• 4417", from: "Warehouse, Sergeli" },
+        { amount: "+150,000", card: "Uzcard •• 0912", from: "Promo, Chilanzar" },
+      ],
+    },
+    docs: {
+      title: "Documents on your phone",
+      text: "The contract and act are signed in the app, with no trips to an office.",
+      act: "Act No. 214",
+      sum: "180,000",
+      sign: "Sign",
+    },
+    status: {
+      title: "Help with self-employed status",
+      text: "If you are not registered yet, the app shows how to do it online.",
+      steps: ["Passport", "Self-employed status", "Card for payouts"],
+    },
+    rating: {
+      title: "Your rating unlocks the best shifts",
+      text: "The more shifts you complete without cancelling, the earlier you see new gigs.",
+      score: "4.9",
+      stats: ["32 shifts", "no cancellations"],
+    },
+  },
+
+  board: {
+    title: "Pick any day and time",
+    text: "This is how gigs look in the app. These are examples; real shifts appear once we launch in your district.",
+    daysLabel: "Day",
+    days: ["Today", "Tomorrow", "In two days", "Weekend"],
+    categoriesLabel: "Type of work",
+    categories: {
+      all: "All",
+      warehouse: "Warehouses",
+      delivery: "Delivery",
+      retail: "Retail and promo",
+      events: "Events",
+      cleaning: "Cleaning",
+    },
+    shifts: { day: "Day", evening: "Evening", night: "Night" },
+    perShift: "per shift",
+    hours: "h",
+    empty: "No gigs of this type on that day. Try another day or type of work.",
+    cta: "Follow new gigs on Telegram",
+    gigs: [
+      { day: 0, cat: "warehouse", title: "Order picker", place: "Warehouse, Sergeli", time: "18:00–23:00", shift: "evening", pay: 180_000, hours: 5 },
+      { day: 0, cat: "delivery", title: "Bike courier", place: "Food delivery, Yunusabad", time: "11:00–19:00", shift: "day", pay: 220_000, hours: 8 },
+      { day: 0, cat: "retail", title: "Merchandiser", place: "Supermarket, Chilanzar", time: "08:00–14:00", shift: "day", pay: 140_000, hours: 6 },
+      { day: 1, cat: "warehouse", title: "Unloading goods", place: "Warehouse, Yashnabad", time: "07:00–12:00", shift: "day", pay: 160_000, hours: 5 },
+      { day: 1, cat: "events", title: "Banquet waiter", place: "Restaurant, Mirabad", time: "17:00–23:00", shift: "evening", pay: 250_000, hours: 6 },
+      { day: 1, cat: "cleaning", title: "Office cleaning", place: "Business center, Mirzo Ulugbek", time: "19:00–23:00", shift: "evening", pay: 130_000, hours: 4 },
+      { day: 2, cat: "retail", title: "Promoter", place: "Shopping mall, Chilanzar", time: "10:00–16:00", shift: "day", pay: 150_000, hours: 6 },
+      { day: 2, cat: "warehouse", title: "Stocktaking", place: "Electronics store, Shaykhantakhur", time: "22:00–06:00", shift: "night", pay: 240_000, hours: 8 },
+      { day: 2, cat: "delivery", title: "Courier with own car", place: "Parcel delivery, Sergeli", time: "09:00–18:00", shift: "day", pay: 260_000, hours: 9 },
+      { day: 3, cat: "events", title: "Exhibition host", place: "Exhibition center, Yunusabad", time: "09:00–17:00", shift: "day", pay: 200_000, hours: 8 },
+      { day: 3, cat: "cleaning", title: "Post-renovation cleaning", place: "Apartment, Yakkasaray", time: "10:00–16:00", shift: "day", pay: 180_000, hours: 6 },
+      { day: 3, cat: "warehouse", title: "Order picker", place: "Dark store, Mirabad", time: "08:00–16:00", shift: "day", pay: 190_000, hours: 8 },
+    ],
   },
 
   steps: {
-    title: "From posting to payout in one place",
+    title: "How to get your first shift",
     items: [
       {
-        title: "Describe the task",
-        text: "What to do, where, when and how much you pay. There are templates for shifts, one-off tasks and seasonal projects.",
+        title: "Sign up",
+        text: "With your phone number. You will need a passport and an Uzcard or Humo card for payouts.",
       },
       {
-        title: "Pick contractors",
-        text: "Applications come from people nearby, with ratings, reviews and the number of shifts worked.",
+        title: "Register as self-employed",
+        text: "If you are not registered yet, the app shows how to do it online.",
       },
       {
-        title: "Accept the work",
-        text: "The contractor checks in and out of the shift in the app, and you confirm the result in the dashboard.",
+        title: "Pick a gig",
+        text: "By district, day and type of work. Apply in a couple of taps, with no interviews.",
       },
       {
-        title: "Act and payout, automatically",
-        text: "Once you accept, Bajar generates the act and sends the money to an Uzcard or Humo card.",
+        title: "Get paid",
+        text: "The company accepts the work, you sign the act on your phone, and the money lands on your card.",
       },
     ],
+  },
+
+  audiences: {
+    title: "Side jobs that fit your schedule",
+    items: [
+      { label: "For students", image: "/img/courier.webp", alt: "Young courier with an insulated bag" },
+      { label: "After your main job", image: "/img/it.webp", alt: "Man holding a laptop" },
+      { label: "For handy people", image: "/img/builder.webp", alt: "Handyman holding a power drill" },
+      { label: "On weekends", image: "/img/retail.webp", alt: "Contractor holding a box of products" },
+    ],
+    tagsLabel: "Also gigs that are",
+    tags: ["no experience", "near home", "4 hours long", "one-off", "on weekends", "in the evening", "at night"],
   },
 
   business: {
-    title: "For companies: cover shifts without hiring",
+    title: "Contractors for shifts, without hiring",
     text: "For peak days, seasonal projects and tasks that do not need a full-time employee.",
-    points: [
-      { icon: "lightning", title: "Fast matching", text: "Contractors near your site see the gig as soon as it is posted." },
-      {
-        icon: "star",
-        title: "Ratings and reviews",
-        text: "See every contractor's reviews from other companies and their history of shifts.",
-      },
-      {
-        icon: "users",
-        title: "Your own pool",
-        text: "Save the people you liked working with and offer them new shifts first.",
-      },
-      {
-        icon: "files",
-        title: "Documents and payouts",
-        text: "Contracts, acts and payouts in the same Bajar dashboard, with no extra work for accounting.",
-      },
-    ],
-  },
-
-  workers: {
-    title: "For contractors: side jobs near home",
-    text: "Shifts and one-off tasks from companies. You decide when and how much to work.",
-    points: [
-      "Gigs near home at times that suit you",
-      "Paid to your Uzcard or Humo card once the work is accepted",
-      "Contract and act signed on your phone",
-      "Help with registering as self-employed",
-      "A good rating unlocks more offers",
-    ],
-    cta: "Gigs on our Telegram",
-    imageAlt: "Bajar contractor app: monthly earnings, an act to sign and payout history",
-  },
-
-  categories: {
-    title: "Gigs you can post",
-    items: [
-      { icon: "truck", name: "Delivery", text: "Couriers, drivers, forwarders" },
-      { icon: "package", name: "Warehouses", text: "Order picking, unloading, stocktaking" },
-      { icon: "storefront", name: "Retail and promo", text: "Merchandisers, promoters, sales assistants" },
-      { icon: "event", name: "Events", text: "Waiters, hosts, venue setup" },
-      { icon: "cleaning", name: "Cleaning", text: "Offices, warehouses, after renovation" },
-      { icon: "repair", name: "Repairs and installation", text: "Craftsmen, handymen, furniture assembly" },
-      { icon: "calls", name: "Call center", text: "Outbound calls, support, surveys" },
-      { icon: "online", name: "Online tasks", text: "Design, copywriting, data labeling" },
-    ],
+    post: {
+      title: "Post a shift in a couple of minutes",
+      text: "Describe the task, address, time and pay. Contractors nearby see it right away.",
+      fields: [
+        { label: "Task", value: "Order picker" },
+        { label: "Address", value: "Warehouse, Sergeli" },
+        { label: "When", value: "Fri, 18:00–23:00" },
+        { label: "Pay", value: "180,000 UZS per shift" },
+        { label: "People needed", value: "6" },
+      ],
+      publish: "Publish",
+    },
+    applicants: {
+      title: "Applicants with ratings",
+      text: "See each person's rating, company reviews and number of shifts.",
+      accept: "Accept",
+      accepted: "On shift",
+      items: [
+        { name: "Aziz Rakhimov", meta: "4.9 · 32 shifts", accepted: true },
+        { name: "Dilnoza Karimova", meta: "4.8 · 18 shifts", accepted: true },
+        { name: "Shakhzod Tursunov", meta: "New", accepted: false },
+      ],
+    },
+    pool: {
+      title: "Your own pool",
+      text: "Save the people you liked working with and invite them to shifts first.",
+      invite: "Invite 12 people from your pool",
+    },
+    docs: {
+      title: "Documents and payouts",
+      text: "After the shift the acts are generated automatically, and the payout goes as a single registry from your Bajar dashboard.",
+      registry: "Friday shift",
+      rows: [
+        { label: "Contractors", value: "6" },
+        { label: "Acts signed", value: "6 of 6" },
+        { label: "To pay", value: "1,080,000 UZS" },
+      ],
+      pay: "Pay",
+    },
   },
 
   faq: {
     title: "Frequently asked questions",
     items: [
       {
+        q: "Who can take gigs?",
+        a: "Self-employed people, sole traders and individuals. If you are not registered as self-employed yet, the app shows how to do it online.",
+      },
+      {
+        q: "When do I get paid?",
+        a: "Once the company accepts the work and you sign the act in the app. The money usually reaches your Uzcard or Humo card within minutes.",
+      },
+      {
+        q: "Do I need experience?",
+        a: "Not for many gigs. Each gig card says what skills are needed and which documents to bring.",
+      },
+      {
         q: "How is the marketplace different from Bajar payouts?",
-        a: "Payouts are for contractors you already have. The marketplace helps you find new ones: you post a shift or a task, and the contract, act and payout then work just like in the main dashboard.",
+        a: "Payouts are for companies that already have contractors. The marketplace helps them find new ones: the company posts a shift, and the contract, act and payout work just like in the main dashboard.",
       },
       {
-        q: "Who can apply for gigs?",
-        a: "Self-employed people, sole traders and individuals. If someone is not registered as self-employed yet, the app shows how to do it.",
-      },
-      {
-        q: "How are contractors vetted?",
-        a: "Contractors confirm their identity when they sign up, and Bajar checks their status before every payout. After each shift the company leaves a review that other clients can see.",
-      },
-      {
-        q: "How do contractors get paid?",
-        a: "The company confirms the work, the act is generated automatically and the money goes to an Uzcard or Humo card, usually within minutes.",
-      },
-      {
-        q: "How much does posting cost?",
+        q: "How much does posting cost for a company?",
         a: "It depends on how many shifts and tasks you post a month. A manager will work out the price for your volume during the demo.",
       },
     ],
