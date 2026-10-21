@@ -11,9 +11,6 @@ export const en: Dict = {
     ogLocale: "en_US",
   },
   ui: {
-    products: "Bajar products",
-    productPayouts: "Payouts",
-    productJobs: "Gigs",
     home: "Bajar, home",
     mainNav: "Main navigation",
     openMenu: "Open menu",
@@ -26,13 +23,22 @@ export const en: Dict = {
     country: "Uzbekistan",
     city: "Tashkent",
   },
-  nav: [
-    { label: "Why Bajar", href: "#why" },
-    { label: "How it works", href: "#how" },
-    { label: "Features", href: "#features" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "FAQ", href: "#faq" },
-  ],
+  products: {
+    business: {
+      label: "For business",
+      items: {
+        home: { name: "Bajar Payouts", text: "A platform that automates payouts and work with freelance staff" },
+        hire: { name: "Bajar Hire", text: "A platform for finding and hiring temporary staff" },
+      },
+    },
+    workers: {
+      label: "For contractors",
+      items: {
+        jobs: { name: "Bajar Gigs", text: "A platform for finding temporary tasks" },
+        getpaid: { name: "Get paid", text: "A platform for receiving payouts from clients" },
+      },
+    },
+  },
 
   cta: {
     primary: "Book a demo",
@@ -413,20 +419,8 @@ export const en: Dict = {
   },
 
   footer: {
-    tagline: "A payout platform for sole traders, self-employed people and individuals in Uzbekistan.",
+    tagline: "A platform for working with contractors in Uzbekistan: payouts, temporary staffing and side jobs.",
     columns: [
-      {
-        title: "Product",
-        links: [
-          { label: "Why Bajar", href: "#why" },
-          { label: "How it works", href: "#how" },
-          { label: "Features", href: "#features" },
-          { label: "For contractors", href: "#contractors" },
-          { label: "Gig marketplace", href: "@jobs" },
-          { label: "Pricing", href: "#pricing" },
-          { label: "FAQ", href: "#faq" },
-        ],
-      },
       {
         title: "Legal",
         links: [

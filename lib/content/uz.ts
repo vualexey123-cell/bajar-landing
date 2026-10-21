@@ -12,9 +12,6 @@ export const uz: Dict = {
     ogLocale: "uz_UZ",
   },
   ui: {
-    products: "Bajar mahsulotlari",
-    productPayouts: "To‘lovlar",
-    productJobs: "Qo‘shimcha ish",
     home: "Bajar, bosh sahifa",
     mainNav: "Asosiy navigatsiya",
     openMenu: "Menyuni ochish",
@@ -27,13 +24,22 @@ export const uz: Dict = {
     country: "O‘zbekiston",
     city: "Toshkent",
   },
-  nav: [
-    { label: "Nega Bajar", href: "#why" },
-    { label: "Qanday ishlaydi", href: "#how" },
-    { label: "Imkoniyatlar", href: "#features" },
-    { label: "Tariflar", href: "#pricing" },
-    { label: "Savollar", href: "#faq" },
-  ],
+  products: {
+    business: {
+      label: "Biznes uchun",
+      items: {
+        home: { name: "Bajar To‘lovlar", text: "Shtatdan tashqari xodimlarga to‘lovlar va ular bilan ishlashni avtomatlashtirish platformasi" },
+        hire: { name: "Bajar Birja", text: "Vaqtinchalik xodimlarni qidirish va yollash platformasi" },
+      },
+    },
+    workers: {
+      label: "Ijrochilar uchun",
+      items: {
+        jobs: { name: "Bajar Qo‘shimcha ish", text: "Vaqtinchalik topshiriqlarni qidirish platformasi" },
+        getpaid: { name: "To‘lovlarni olish", text: "Buyurtmachidan to‘lovlarni olish platformasi" },
+      },
+    },
+  },
 
   cta: {
     primary: "Demo olish",
@@ -414,20 +420,8 @@ export const uz: Dict = {
   },
 
   footer: {
-    tagline: "O‘zbekistonda YaTT, o‘zini o‘zi band qilganlar va jismoniy shaxslarga to‘lovlar platformasi.",
+    tagline: "O‘zbekistonda ijrochilar bilan ishlash platformasi: to‘lovlar, vaqtinchalik xodimlarni tanlash va qo‘shimcha ish.",
     columns: [
-      {
-        title: "Mahsulot",
-        links: [
-          { label: "Nega Bajar", href: "#why" },
-          { label: "Qanday ishlaydi", href: "#how" },
-          { label: "Imkoniyatlar", href: "#features" },
-          { label: "Ijrochilarga", href: "#contractors" },
-          { label: "Qo‘shimcha ishlar birjasi", href: "@jobs" },
-          { label: "Tariflar", href: "#pricing" },
-          { label: "Savollar", href: "#faq" },
-        ],
-      },
       {
         title: "Hujjatlar",
         links: [

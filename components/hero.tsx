@@ -5,7 +5,7 @@ import { Button, Container } from "@/components/ui";
 export function Hero({ t }: { t: Dict }) {
   const { cta, hero } = t;
   return (
-    <section id="top" className="relative pt-[156px] pb-20 md:pt-[184px] md:pb-28">
+    <section id="top" className="relative pt-[120px] pb-20 md:pt-[148px] md:pb-28">
       <Container>
         <div className="max-w-[1180px]">
           <h1 className="rise text-[clamp(2.4rem,4.4vw,4rem)] font-semibold leading-[1.02] tracking-[-0.045em] text-balance">

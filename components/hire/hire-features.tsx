@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { AddressBook, CheckCircle, Files, NotePencil, UsersThree } from "@phosphor-icons/react/dist/ssr";
-import type { JobsDict } from "@/lib/i18n";
+import type { HireDict } from "@/lib/i18n";
 import { asset } from "@/lib/site";
-import { Button, Container, SectionTitle } from "@/components/ui";
+import { Container, SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
 import { CellHead } from "@/components/features";
 
@@ -14,47 +14,16 @@ const initials = (name: string) =>
     .map((p) => p[0])
     .join("");
 
-// A brand-coloured card inside the warm section that sends companies to their block.
-export function BusinessTeaser({ j }: { j: JobsDict }) {
-  const { teaser } = j;
+// Bento of the company cabinet, built like the features grid on the payouts page.
+export function HireFeatures({ h }: { h: HireDict }) {
+  const b = h.features;
   return (
-    <section aria-labelledby="teaser-title" className="pb-24 md:pb-36">
+    <section id="features" aria-labelledby="features-title" className="pb-24 md:pb-36">
       <Container>
-        <Reveal className="theme-brand flex flex-col gap-8 rounded-card bg-accent p-6 text-on-accent sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:gap-14 lg:px-14">
-          <div className="max-w-[640px]">
-            <h2
-              id="teaser-title"
-              className="text-[clamp(1.75rem,2.8vw,2.4rem)] leading-[1.08] font-semibold tracking-[-0.03em] text-balance"
-            >
-              {teaser.title}
-            </h2>
-            <p className="mt-4 max-w-[56ch] text-[17px] leading-relaxed text-on-accent/85">{teaser.text}</p>
-          </div>
-          <Button href="#business" size="lg" variant="light" className="w-full sm:w-auto">
-            {teaser.cta}
-          </Button>
-        </Reveal>
-      </Container>
-    </section>
-  );
-}
-
-// The company side in the brand palette, built like the features grid on the payouts page.
-export function JobsBusiness({ j }: { j: JobsDict }) {
-  const { business: b, cta } = j;
-  return (
-    <section id="business" aria-labelledby="business-title" className="pt-24 pb-24 md:pt-36 md:pb-36">
-      <Container>
-        <Reveal className="flex flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-[760px]">
-            <SectionTitle>
-              <span id="business-title">{b.title}</span>
-            </SectionTitle>
-            <p className="mt-5 max-w-[52ch] text-[18px] leading-relaxed text-ink-2">{b.text}</p>
-          </div>
-          <Button href="#lead" size="lg">
-            {cta.primary}
-          </Button>
+        <Reveal className="max-w-[760px]">
+          <SectionTitle>
+            <span id="features-title">{b.title}</span>
+          </SectionTitle>
         </Reveal>
 
         <div className="mt-14 grid grid-cols-1 gap-4 lg:grid-cols-12">

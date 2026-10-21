@@ -9,9 +9,6 @@ export const ru = {
     ogLocale: "ru_RU",
   },
   ui: {
-    products: "Продукты Bajar",
-    productPayouts: "Выплаты",
-    productJobs: "Подработка",
     home: "Bajar, на главную",
     mainNav: "Основная навигация",
     openMenu: "Открыть меню",
@@ -24,13 +21,23 @@ export const ru = {
     country: "Узбекистан",
     city: "Ташкент",
   },
-  nav: [
-    { label: "Почему Bajar", href: "#why" },
-    { label: "Как это работает", href: "#how" },
-    { label: "Возможности", href: "#features" },
-    { label: "Тарифы", href: "#pricing" },
-    { label: "Вопросы", href: "#faq" },
-  ],
+  // Two audiences, two products each. Shown in the header menu and the footer.
+  products: {
+    business: {
+      label: "Для бизнеса",
+      items: {
+        home: { name: "Bajar Выплаты", text: "Платформа для автоматизации выплат и работы с внештатным персоналом" },
+        hire: { name: "Bajar Биржа", text: "Платформа для поиска и найма временного персонала" },
+      },
+    },
+    workers: {
+      label: "Для исполнителей",
+      items: {
+        jobs: { name: "Bajar Подработка", text: "Платформа для поиска временных заданий" },
+        getpaid: { name: "Получение выплат", text: "Платформа для получения выплат от заказчика" },
+      },
+    },
+  },
 
   // One primary action across the page, plus a soft one for visitors not ready to talk.
   cta: {
@@ -422,20 +429,8 @@ export const ru = {
   },
 
   footer: {
-    tagline: "Платформа для выплат ИП, самозанятым и физлицам в Узбекистане.",
+    tagline: "Платформа для работы с исполнителями в Узбекистане: выплаты, подбор временного персонала и подработка.",
     columns: [
-      {
-        title: "Продукт",
-        links: [
-          { label: "Почему Bajar", href: "#why" },
-          { label: "Как это работает", href: "#how" },
-          { label: "Возможности", href: "#features" },
-          { label: "Исполнителям", href: "#contractors" },
-          { label: "Биржа подработок", href: "@jobs" },
-          { label: "Тарифы", href: "#pricing" },
-          { label: "Вопросы", href: "#faq" },
-        ],
-      },
       {
         title: "Документы",
         links: [

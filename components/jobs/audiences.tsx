@@ -1,12 +1,18 @@
 import Image from "next/image";
-import type { JobsDict } from "@/lib/i18n";
 import { asset } from "@/lib/site";
 import { Container, SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
 
-// Who the gigs suit: studio portraits with a caption, then quick tags.
-export function Audiences({ j }: { j: JobsDict }) {
-  const a = j.audiences;
+type AudiencesData = {
+  title: string;
+  items: { label: string; image: string; alt: string }[];
+  tagsLabel: string;
+  tags: string[];
+};
+
+// Studio portraits with a caption, then quick tags. Used for who the gigs suit
+// (contractor page) and for who can be hired (Bajar Hire).
+export function Audiences({ data: a }: { data: AudiencesData }) {
   return (
     <section aria-labelledby="audiences-title" className="pb-24 md:pb-36">
       <Container>

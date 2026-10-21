@@ -9,15 +9,6 @@ export const jobsUz: JobsDict = {
     ogDescription: "Ijrochilar uyga yaqin qo‘shimcha ish topadi, kompaniyalar smenalar uchun odam topadi.",
   },
 
-  nav: [
-    { label: "Topshiriqlar", href: "#gigs" },
-    { label: "Qanday boshlash", href: "#how" },
-    { label: "Kompaniyalarga", href: "#business" },
-    { label: "Savollar", href: "#faq" },
-  ],
-
-  cta: { primary: "Ish joylashtirish" },
-
   hero: {
     title: "Uyga yaqin, kartaga to‘lanadigan qo‘shimcha ish",
     text: "Tumaningizdagi kompaniyalardan smenalar va bir martalik topshiriqlar. Vaqtni o‘zingiz tanlaysiz, shartnoma, dalolatnoma va to‘lov esa ilovada rasmiylashtiriladi.",
@@ -47,7 +38,7 @@ export const jobsUz: JobsDict = {
   teaser: {
     title: "Smenalar uchun odam qidiryapsizmi?",
     text: "Ishni joylashtiring, uni obyektingiz yaqinidagi ijrochilar ko‘radi. Shartnoma, dalolatnoma va to‘lov o‘zi rasmiylashtiriladi.",
-    cta: "Kompaniyalarga",
+    cta: "Bajar Birja’ga o‘tish",
   },
 
   benefits: {
@@ -154,48 +145,10 @@ export const jobsUz: JobsDict = {
     tags: ["tajribasiz", "uyga yaqin", "4 soatga", "bir martalik", "dam olish kunlari", "kechki", "tungi"],
   },
 
-  business: {
-    title: "Shtatga olmasdan smenalar uchun ijrochilar",
-    text: "Gavjum kunlar, mavsumiy loyihalar va to‘liq kunlik xodim kerak bo‘lmagan vazifalar uchun.",
-    post: {
-      title: "Smena bir necha daqiqada joylashtiriladi",
-      text: "Vazifa, manzil, vaqt va to‘lovni yozing. Uni darhol yaqin atrofdagi ijrochilar ko‘radi.",
-      fields: [
-        { label: "Topshiriq", value: "Buyurtma yig‘uvchi" },
-        { label: "Manzil", value: "Ombor, Sergeli" },
-        { label: "Qachon", value: "Juma, 18:00–23:00" },
-        { label: "To‘lov", value: "Smena uchun 180 000 so‘m" },
-        { label: "Kerakli odamlar", value: "6" },
-      ],
-      publish: "E’lon qilish",
-    },
-    applicants: {
-      title: "Reytingli javoblar",
-      text: "Har birining reytingi, kompaniyalar sharhlari va smenalar soni ko‘rinadi.",
-      accept: "Qabul qilish",
-      accepted: "Smenada",
-      items: [
-        { name: "Aziz Rahimov", meta: "4,9 · 32 smena", accepted: true },
-        { name: "Dilnoza Karimova", meta: "4,8 · 18 smena", accepted: true },
-        { name: "Shahzod Tursunov", meta: "Yangi", accepted: false },
-      ],
-    },
-    pool: {
-      title: "O‘z ijrochilaringiz ro‘yxati",
-      text: "Ishlash yoqqan odamlarni saqlang va smenalarga avval ularni chaqiring.",
-      invite: "Ro‘yxatdan 12 kishini chaqirish",
-    },
-    docs: {
-      title: "Hujjatlar va to‘lov",
-      text: "Smenadan keyin dalolatnomalar o‘zi tuziladi, to‘lov esa Bajar kabinetidan bitta reestr bilan ketadi.",
-      registry: "Jumadagi smena",
-      rows: [
-        { label: "Ijrochilar", value: "6" },
-        { label: "Dalolatnomalar imzolandi", value: "6 / 6" },
-        { label: "To‘lovga", value: "1 080 000 so‘m" },
-      ],
-      pay: "To‘lash",
-    },
+  band: {
+    title: "Kompaniya bilan allaqachon ishlayapsizmi?",
+    text: "Agar buyurtmachi Bajar orqali to‘lasa, shartnoma, dalolatnomalar va to‘lovlar o‘sha ilovaga keladi.",
+    cta: "To‘lovlarni olish",
   },
 
   faq: {
@@ -214,25 +167,9 @@ export const jobsUz: JobsDict = {
         a: "Ko‘p topshiriqlar uchun yo‘q. Topshiriq kartasida nima qila olish kerakligi va qanday hujjatlarni olish kerakligi yozilgan.",
       },
       {
-        q: "Birja Bajar to‘lovlaridan nimasi bilan farq qiladi?",
-        a: "To‘lovlar kompaniyada ijrochilar allaqachon bo‘lganda kerak. Birja yangilarini topishga yordam beradi: kompaniya smenani e’lon qiladi, shartnoma, dalolatnoma va to‘lov esa asosiy kabinetdagidek davom etadi.",
-      },
-      {
-        q: "Kompaniya uchun joylashtirish qancha turadi?",
-        a: "Narx oyiga smena va topshiriqlar soniga bog‘liq. Menejer uni demoda hajmingizga qarab hisoblab beradi.",
+        q: "Turli kompaniyalardan topshiriq olish mumkinmi?",
+        a: "Ha. Bajar Qo‘shimcha ish’da istalgan kompaniyaning topshiriqlarini o‘zingiz tanlaysiz va qulay vaqtda ishlaysiz.",
       },
     ],
-  },
-
-  lead: {
-    title: "Birinchi ishni joylashtiring",
-    text: "Kontaktlaringizni qoldiring, menejer vazifani tasvirlashga va ijrochilarni tanlashni boshlashga yordam beradi.",
-    benefits: [
-      "Obyektingiz yaqinidagi ijrochilar",
-      "Har bir ijrochi bo‘yicha reyting va sharhlar",
-      "Shartnoma, dalolatnoma va kartaga to‘lov buxgalteriyasiz",
-      "Keyingi smenalar uchun tekshirilgan odamlar ro‘yxati",
-    ],
-    size: "Oyiga nechta odam kerak",
   },
 };

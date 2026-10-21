@@ -9,15 +9,6 @@ export const jobsEn: JobsDict = {
     ogDescription: "Contractors find side jobs near home, companies find people for their shifts.",
   },
 
-  nav: [
-    { label: "Gigs", href: "#gigs" },
-    { label: "How to start", href: "#how" },
-    { label: "For companies", href: "#business" },
-    { label: "FAQ", href: "#faq" },
-  ],
-
-  cta: { primary: "Post a gig" },
-
   hero: {
     title: "Side jobs near home, paid to your card",
     text: "Shifts and one-off tasks from companies in your district. You pick the time, and the contract, act and payout are handled in the app.",
@@ -47,7 +38,7 @@ export const jobsEn: JobsDict = {
   teaser: {
     title: "Looking for people for your shifts?",
     text: "Post a gig and contractors near your site will see it. The contract, act and payout are handled for you.",
-    cta: "For companies",
+    cta: "Go to Bajar Hire",
   },
 
   benefits: {
@@ -154,48 +145,10 @@ export const jobsEn: JobsDict = {
     tags: ["no experience", "near home", "4 hours long", "one-off", "on weekends", "in the evening", "at night"],
   },
 
-  business: {
-    title: "Contractors for shifts, without hiring",
-    text: "For peak days, seasonal projects and tasks that do not need a full-time employee.",
-    post: {
-      title: "Post a shift in a couple of minutes",
-      text: "Describe the task, address, time and pay. Contractors nearby see it right away.",
-      fields: [
-        { label: "Task", value: "Order picker" },
-        { label: "Address", value: "Warehouse, Sergeli" },
-        { label: "When", value: "Fri, 18:00–23:00" },
-        { label: "Pay", value: "180,000 UZS per shift" },
-        { label: "People needed", value: "6" },
-      ],
-      publish: "Publish",
-    },
-    applicants: {
-      title: "Applicants with ratings",
-      text: "See each person's rating, company reviews and number of shifts.",
-      accept: "Accept",
-      accepted: "On shift",
-      items: [
-        { name: "Aziz Rakhimov", meta: "4.9 · 32 shifts", accepted: true },
-        { name: "Dilnoza Karimova", meta: "4.8 · 18 shifts", accepted: true },
-        { name: "Shakhzod Tursunov", meta: "New", accepted: false },
-      ],
-    },
-    pool: {
-      title: "Your own pool",
-      text: "Save the people you liked working with and invite them to shifts first.",
-      invite: "Invite 12 people from your pool",
-    },
-    docs: {
-      title: "Documents and payouts",
-      text: "After the shift the acts are generated automatically, and the payout goes as a single registry from your Bajar dashboard.",
-      registry: "Friday shift",
-      rows: [
-        { label: "Contractors", value: "6" },
-        { label: "Acts signed", value: "6 of 6" },
-        { label: "To pay", value: "1,080,000 UZS" },
-      ],
-      pay: "Pay",
-    },
+  band: {
+    title: "Already working with a company?",
+    text: "If your client pays through Bajar, the contract, acts and payouts come to the same app.",
+    cta: "Get paid",
   },
 
   faq: {
@@ -214,25 +167,9 @@ export const jobsEn: JobsDict = {
         a: "Not for many gigs. Each gig card says what skills are needed and which documents to bring.",
       },
       {
-        q: "How is the marketplace different from Bajar payouts?",
-        a: "Payouts are for companies that already have contractors. The marketplace helps them find new ones: the company posts a shift, and the contract, act and payout work just like in the main dashboard.",
-      },
-      {
-        q: "How much does posting cost for a company?",
-        a: "It depends on how many shifts and tasks you post a month. A manager will work out the price for your volume during the demo.",
+        q: "Can I take gigs from different companies?",
+        a: "Yes. You choose gigs from any company on Bajar Gigs and work when it suits you.",
       },
     ],
-  },
-
-  lead: {
-    title: "Post your first gig",
-    text: "Leave your contacts, and a manager will help you describe the task and start matching contractors.",
-    benefits: [
-      "Contractors near your site",
-      "Ratings and reviews for every contractor",
-      "Contract, act and card payout without your accounting team",
-      "Your own pool of vetted people for the next shifts",
-    ],
-    size: "How many people you need a month",
   },
 };

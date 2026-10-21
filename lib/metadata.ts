@@ -1,11 +1,26 @@
 import type { Metadata, Viewport } from "next";
-import { dictionaries, jobsDictionaries, locales, pagePath, type Locale, type Page } from "@/lib/i18n";
+import {
+  dictionaries,
+  getPaidDictionaries,
+  hireDictionaries,
+  jobsDictionaries,
+  locales,
+  pagePath,
+  type Locale,
+  type Page,
+} from "@/lib/i18n";
 import { site } from "@/lib/site";
 
 // Per-language, per-page head tags. Relative URLs resolve against metadataBase,
 // which already includes the base path on GitHub Pages.
 export function pageMetadata(locale: Locale, page: Page = "home"): Metadata {
-  const metaOf = (l: Locale) => (page === "jobs" ? jobsDictionaries[l].meta : dictionaries[l].meta);
+  const metaOf = (l: Locale) =>
+    ({
+      home: dictionaries[l].meta,
+      hire: hireDictionaries[l].meta,
+      jobs: jobsDictionaries[l].meta,
+      getpaid: getPaidDictionaries[l].meta,
+    })[page];
   const meta = metaOf(locale);
   const ogLocale = (l: Locale) => dictionaries[l].meta.ogLocale;
   return {
