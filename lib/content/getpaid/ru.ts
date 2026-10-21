@@ -19,7 +19,7 @@ export const getPaidRu = {
       { src: "/img/media.webp", alt: "Видеограф с камерой" },
       { src: "/img/it.webp", alt: "Разработчик с ноутбуком" },
       { src: "/img/other.webp", alt: "Исполнительница смотрит в телефон" },
-      { src: "/img/tutor.webp", alt: "Преподаватель с тетрадями" },
+      { src: "/img/translator.webp", alt: "Переводчик с папкой документов" },
     ],
     phoneAlt: "Приложение исполнителя Bajar: заработок за месяц, акт на подпись и история выплат",
   },

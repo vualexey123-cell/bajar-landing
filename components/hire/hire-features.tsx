@@ -6,7 +6,13 @@ import { Container, SectionTitle } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
 import { CellHead } from "@/components/features";
 
-const poolPhotos = ["/img/courier.webp", "/img/retail.webp", "/img/it.webp", "/img/tutor.webp", "/img/builder.webp"];
+const poolPhotos = [
+  "/img/warehouse.webp",
+  "/img/waiter.webp",
+  "/img/cleaner.webp",
+  "/img/hostess.webp",
+  "/img/callcenter.webp",
+];
 
 const initials = (name: string) =>
   name

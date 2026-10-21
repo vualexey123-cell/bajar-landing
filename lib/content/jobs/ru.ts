@@ -17,10 +17,10 @@ export const jobsRu = {
     primary: "Смотреть задания",
     soft: "Ищу исполнителей",
     photos: [
-      { src: "/img/courier.webp", alt: "Курьер с термосумкой смотрит в телефон" },
-      { src: "/img/retail.webp", alt: "Исполнительница держит коробку с товарами" },
-      { src: "/img/builder.webp", alt: "Мастер с шуруповёртом" },
-      { src: "/img/tutor.webp", alt: "Исполнительница с тетрадями" },
+      { src: "/img/warehouse.webp", alt: "Сборщик заказов со сканером и коробкой" },
+      { src: "/img/waiter.webp", alt: "Официантка с подносом" },
+      { src: "/img/cleaner.webp", alt: "Сотрудница клининга с распылителем" },
+      { src: "/img/driver.webp", alt: "Водитель с ключами от машины" },
     ],
     phone: {
       title: "Задания рядом",
@@ -137,10 +137,10 @@ export const jobsRu = {
   audiences: {
     title: "Подработка под ваш график",
     items: [
-      { label: "Студентам", image: "/img/courier.webp", alt: "Молодой курьер с термосумкой" },
-      { label: "После основной работы", image: "/img/it.webp", alt: "Мужчина с ноутбуком" },
+      { label: "Студентам", image: "/img/student.webp", alt: "Студентка с рюкзаком и телефоном" },
+      { label: "После основной работы", image: "/img/office.webp", alt: "Мужчина в рубашке с пиджаком на плече" },
       { label: "Мастерам на все руки", image: "/img/builder.webp", alt: "Мастер с шуруповёртом" },
-      { label: "В выходные", image: "/img/retail.webp", alt: "Исполнительница с коробкой товаров" },
+      { label: "В выходные", image: "/img/hostess.webp", alt: "Хостес с планшетом" },
     ],
     tagsLabel: "А ещё задания",
     tags: ["без опыта", "рядом с домом", "на 4 часа", "разовые", "по выходным", "вечерние", "ночные"],

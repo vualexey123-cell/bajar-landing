@@ -16,10 +16,10 @@ export const jobsEn: JobsDict = {
     primary: "See gigs",
     soft: "I'm hiring",
     photos: [
-      { src: "/img/courier.webp", alt: "Courier with an insulated bag looking at his phone" },
-      { src: "/img/retail.webp", alt: "Contractor holding a box of products" },
-      { src: "/img/builder.webp", alt: "Handyman holding a power drill" },
-      { src: "/img/tutor.webp", alt: "Contractor holding notebooks" },
+      { src: "/img/warehouse.webp", alt: "Order picker with a scanner and a box" },
+      { src: "/img/waiter.webp", alt: "Waitress holding a tray" },
+      { src: "/img/cleaner.webp", alt: "Cleaner holding a spray bottle" },
+      { src: "/img/driver.webp", alt: "Driver holding car keys" },
     ],
     phone: {
       title: "Gigs nearby",
@@ -136,10 +136,10 @@ export const jobsEn: JobsDict = {
   audiences: {
     title: "Side jobs that fit your schedule",
     items: [
-      { label: "For students", image: "/img/courier.webp", alt: "Young courier with an insulated bag" },
-      { label: "After your main job", image: "/img/it.webp", alt: "Man holding a laptop" },
+      { label: "For students", image: "/img/student.webp", alt: "Student with a backpack and a phone" },
+      { label: "After your main job", image: "/img/office.webp", alt: "Man in a shirt with a jacket over his shoulder" },
       { label: "For handy people", image: "/img/builder.webp", alt: "Handyman holding a power drill" },
-      { label: "On weekends", image: "/img/retail.webp", alt: "Contractor holding a box of products" },
+      { label: "On weekends", image: "/img/hostess.webp", alt: "Host holding a tablet" },
     ],
     tagsLabel: "Also gigs that are",
     tags: ["no experience", "near home", "4 hours long", "one-off", "on weekends", "in the evening", "at night"],

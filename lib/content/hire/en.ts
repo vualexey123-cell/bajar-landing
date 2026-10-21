@@ -97,13 +97,13 @@ export const hireEn: HireDict = {
   roles: {
     title: "Who you can find",
     items: [
-      { label: "Couriers and drivers", image: "/img/courier.webp", alt: "Courier with an insulated bag" },
-      { label: "Merchandisers and promoters", image: "/img/retail.webp", alt: "Merchandiser holding a box of products" },
-      { label: "Craftsmen and handymen", image: "/img/builder.webp", alt: "Handyman holding a power drill" },
-      { label: "Tutors and consultants", image: "/img/tutor.webp", alt: "Tutor holding notebooks" },
+      { label: "Couriers and drivers", image: "/img/driver.webp", alt: "Driver holding car keys" },
+      { label: "Order pickers and movers", image: "/img/warehouse.webp", alt: "Order picker with a scanner and a box" },
+      { label: "Waiters and hosts", image: "/img/waiter.webp", alt: "Waitress holding a tray" },
+      { label: "Call center operators", image: "/img/callcenter.webp", alt: "Operator wearing a headset" },
     ],
     tagsLabel: "And also",
-    tags: ["order pickers", "movers", "waiters", "hosts", "cleaning", "call center", "online tasks"],
+    tags: ["merchandisers", "promoters", "cleaning", "craftsmen", "tutors", "online tasks"],
   },
 
   band: {

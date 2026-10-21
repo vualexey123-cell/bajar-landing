@@ -97,13 +97,13 @@ export const hireUz: HireDict = {
   roles: {
     title: "Kimlarni topish mumkin",
     items: [
-      { label: "Kuryerlar va haydovchilar", image: "/img/courier.webp", alt: "Termosumkali kuryer" },
-      { label: "Merchendayzerlar va promouterlar", image: "/img/retail.webp", alt: "Mahsulotlar qutisini ushlagan merchendayzer" },
-      { label: "Ustalar va yordamchi ishchilar", image: "/img/builder.webp", alt: "Shurupovyort ushlagan usta" },
-      { label: "O‘qituvchilar va maslahatchilar", image: "/img/tutor.webp", alt: "Daftarlar ushlagan o‘qituvchi" },
+      { label: "Kuryerlar va haydovchilar", image: "/img/driver.webp", alt: "Mashina kalitini ushlagan haydovchi" },
+      { label: "Yig‘uvchilar va yuk tashuvchilar", image: "/img/warehouse.webp", alt: "Skaner va quti ushlagan buyurtma yig‘uvchi" },
+      { label: "Ofitsiantlar va xostes", image: "/img/waiter.webp", alt: "Patnis ushlagan ofitsiant ayol" },
+      { label: "Call-markaz operatorlari", image: "/img/callcenter.webp", alt: "Garnitura taqqan operator" },
     ],
     tagsLabel: "Shuningdek",
-    tags: ["buyurtma yig‘uvchilar", "yuk tashuvchilar", "ofitsiantlar", "xostes", "tozalash", "call-markaz", "onlayn topshiriqlar"],
+    tags: ["merchendayzerlar", "promouterlar", "tozalash", "ustalar", "o‘qituvchilar", "onlayn topshiriqlar"],
   },
 
   band: {

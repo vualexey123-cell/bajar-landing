@@ -16,10 +16,10 @@ export const jobsUz: JobsDict = {
     primary: "Topshiriqlarni ko‘rish",
     soft: "Ijrochi qidiryapman",
     photos: [
-      { src: "/img/courier.webp", alt: "Termosumkali kuryer telefoniga qaramoqda" },
-      { src: "/img/retail.webp", alt: "Ijrochi ayol mahsulotlar solingan quti ushlab turibdi" },
-      { src: "/img/builder.webp", alt: "Shurupovyort ushlagan usta" },
-      { src: "/img/tutor.webp", alt: "Daftarlar ushlagan ijrochi ayol" },
+      { src: "/img/warehouse.webp", alt: "Skaner va quti ushlagan buyurtma yig‘uvchi" },
+      { src: "/img/waiter.webp", alt: "Patnis ushlagan ofitsiant ayol" },
+      { src: "/img/cleaner.webp", alt: "Purkagich ushlagan tozalovchi ayol" },
+      { src: "/img/driver.webp", alt: "Mashina kalitini ushlagan haydovchi" },
     ],
     phone: {
       title: "Yaqin atrofda",
@@ -136,10 +136,10 @@ export const jobsUz: JobsDict = {
   audiences: {
     title: "Grafigingizga mos qo‘shimcha ish",
     items: [
-      { label: "Talabalarga", image: "/img/courier.webp", alt: "Termosumkali yosh kuryer" },
-      { label: "Asosiy ishdan keyin", image: "/img/it.webp", alt: "Noutbuk ushlagan erkak" },
+      { label: "Talabalarga", image: "/img/student.webp", alt: "Ryukzak va telefon ushlagan talaba qiz" },
+      { label: "Asosiy ishdan keyin", image: "/img/office.webp", alt: "Yelkasiga pidjak tashlagan erkak" },
       { label: "Qo‘li gul ustalarga", image: "/img/builder.webp", alt: "Shurupovyort ushlagan usta" },
-      { label: "Dam olish kunlari", image: "/img/retail.webp", alt: "Mahsulotlar qutisini ushlagan ijrochi ayol" },
+      { label: "Dam olish kunlari", image: "/img/hostess.webp", alt: "Planshet ushlagan xostes" },
     ],
     tagsLabel: "Yana topshiriqlar",
     tags: ["tajribasiz", "uyga yaqin", "4 soatga", "bir martalik", "dam olish kunlari", "kechki", "tungi"],

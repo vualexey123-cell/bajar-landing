@@ -268,8 +268,8 @@ export const en: Dict = {
       {
         id: "other",
         name: "Other",
-        image: "/img/other.webp",
-        alt: "Contractor in a light sweater looking at her phone",
+        image: "/img/translator.webp",
+        alt: "Translator holding a document folder",
         text: "Freelancers, translators, consultants, promo staff and other contractors. A contract, an act and a payout for every task.",
         task: { title: "Document translation", qty: "20 pages", rate: "60,000 UZS each", total: "1,200,000 UZS" },
       },

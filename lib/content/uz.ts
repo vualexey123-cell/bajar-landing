@@ -269,8 +269,8 @@ export const uz: Dict = {
       {
         id: "other",
         name: "Boshqa",
-        image: "/img/other.webp",
-        alt: "Och rangli sviter kiygan ijrochi ayol telefoniga qaramoqda",
+        image: "/img/translator.webp",
+        alt: "Hujjatlar papkasini ushlagan tarjimon",
         text: "Frilanserlar, tarjimonlar, maslahatchilar, promouterlar va boshqa ijrochilar. Har bir topshiriq bo‘yicha shartnoma, dalolatnoma va to‘lov.",
         task: { title: "Hujjatlarni tarjima qilish", qty: "20 sahifa", rate: "har biri 60 000 so‘m", total: "1 200 000 so‘m" },
       },

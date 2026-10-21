@@ -4,7 +4,7 @@ import type { HireDict } from "@/lib/i18n";
 import { asset } from "@/lib/site";
 import { Button, Container } from "@/components/ui";
 
-const faces = ["/img/courier.webp", "/img/retail.webp", "/img/it.webp", "/img/builder.webp"];
+const faces = ["/img/warehouse.webp", "/img/waiter.webp", "/img/driver.webp", "/img/callcenter.webp"];
 
 // Same layout as the payouts hero, with a coded company cabinet on the stage:
 // the week's shifts, how full each one is and whether recruiting is still on.

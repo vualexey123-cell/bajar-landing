@@ -19,7 +19,7 @@ export const getPaidEn: GetPaidDict = {
       { src: "/img/media.webp", alt: "Videographer holding a camera" },
       { src: "/img/it.webp", alt: "Developer holding a laptop" },
       { src: "/img/other.webp", alt: "Contractor looking at her phone" },
-      { src: "/img/tutor.webp", alt: "Tutor holding notebooks" },
+      { src: "/img/translator.webp", alt: "Translator holding a document folder" },
     ],
     phoneAlt: "Bajar contractor app: monthly earnings, an act to sign and payout history",
   },

@@ -19,7 +19,7 @@ export const getPaidUz: GetPaidDict = {
       { src: "/img/media.webp", alt: "Kamera ushlagan videograf" },
       { src: "/img/it.webp", alt: "Noutbuk ushlagan dasturchi" },
       { src: "/img/other.webp", alt: "Telefoniga qarayotgan ijrochi ayol" },
-      { src: "/img/tutor.webp", alt: "Daftarlar ushlagan o‘qituvchi" },
+      { src: "/img/translator.webp", alt: "Hujjatlar papkasini ushlagan tarjimon" },
     ],
     phoneAlt: "Bajar ijrochi ilovasi: oylik daromad, imzolash uchun dalolatnoma va to‘lovlar tarixi",
   },
