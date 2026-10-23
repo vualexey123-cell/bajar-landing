@@ -28,7 +28,7 @@ export function Audiences({ data: a }: { data: AudiencesData }) {
               as="li"
               key={it.label}
               delay={0.05 * i}
-              className="relative aspect-[4/5] overflow-hidden rounded-card bg-[#4563a6]"
+              className="relative aspect-[4/5] overflow-hidden rounded-card bg-[var(--photo-bg)]"
             >
               <Image
                 src={asset(it.image)}

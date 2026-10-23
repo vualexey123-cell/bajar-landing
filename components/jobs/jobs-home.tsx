@@ -19,7 +19,7 @@ export function JobsHome({ locale }: { locale: Locale }) {
       <main className="theme-worker bg-bg text-ink">
         <JobsHero t={t} j={j} hireHref={pagePath(locale, "hire")} />
         {/* Companies that land here are sent to Bajar Hire */}
-        <ProductBand {...j.teaser} href={pagePath(locale, "hire")} theme="theme-brand" />
+        <ProductBand {...j.teaser} href={pagePath(locale, "hire")} tone="deep" />
         <WorkerBenefits t={t} j={j} />
         <GigBoard t={t} j={j} locale={locale} />
         <HowItWorks steps={j.steps} />

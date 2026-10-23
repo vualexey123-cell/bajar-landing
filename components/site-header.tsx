@@ -111,6 +111,8 @@ export function SiteHeader({
   const [menu, setMenu] = useState<Audience | null>(null);
   const headerRef = useRef<HTMLElement>(null);
   const uid = useId();
+  // Contractor pages get their own palette for the main button.
+  const ctaTheme = audienceOf[page] === "workers" ? "theme-worker" : "";
 
   useMotionValueEvent(scrollY, "change", (y) => {
     const next = y > 12;
@@ -222,7 +224,7 @@ export function SiteHeader({
 
           <div className="flex items-center gap-2">
             <LanguageSwitch t={t} locale={locale} page={page} />
-            <div className="hidden sm:block">
+            <div className={`hidden sm:block ${ctaTheme}`}>
               <Button href={cta.href}>{cta.label}</Button>
             </div>
             <button
@@ -266,7 +268,7 @@ export function SiteHeader({
                   </div>
                 </motion.div>
               ))}
-              <div onClick={() => setOpen(false)}>
+              <div className={ctaTheme} onClick={() => setOpen(false)}>
                 <Button href={cta.href} size="lg" className="w-full">
                   {cta.label}
                 </Button>

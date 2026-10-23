@@ -17,10 +17,10 @@ export const jobsRu = {
     primary: "Смотреть задания",
     soft: "Ищу исполнителей",
     photos: [
-      { src: "/img/warehouse.webp", alt: "Сборщик заказов со сканером и коробкой" },
-      { src: "/img/waiter.webp", alt: "Официантка с подносом" },
-      { src: "/img/cleaner.webp", alt: "Сотрудница клининга с распылителем" },
-      { src: "/img/driver.webp", alt: "Водитель с ключами от машины" },
+      { src: "/img/w-courier.webp", alt: "Курьер со шлемом и телефоном" },
+      { src: "/img/w-merch.webp", alt: "Мерчендайзер с ящиком яблок" },
+      { src: "/img/w-loader.webp", alt: "Грузчик с коробками" },
+      { src: "/img/w-barista.webp", alt: "Бариста с двумя стаканами кофе" },
     ],
     phone: {
       title: "Задания рядом",
@@ -137,10 +137,10 @@ export const jobsRu = {
   audiences: {
     title: "Подработка под ваш график",
     items: [
-      { label: "Студентам", image: "/img/student.webp", alt: "Студентка с рюкзаком и телефоном" },
-      { label: "После основной работы", image: "/img/office.webp", alt: "Мужчина в рубашке с пиджаком на плече" },
-      { label: "Мастерам на все руки", image: "/img/builder.webp", alt: "Мастер с шуруповёртом" },
-      { label: "В выходные", image: "/img/hostess.webp", alt: "Хостес с планшетом" },
+      { label: "Студентам", image: "/img/w-student.webp", alt: "Студент с наушниками и рюкзаком" },
+      { label: "После основной работы", image: "/img/w-office.webp", alt: "Женщина в тренче с сумкой после работы" },
+      { label: "Мастерам на все руки", image: "/img/w-handyman.webp", alt: "Мастер с ящиком для инструментов" },
+      { label: "В выходные", image: "/img/w-promoter.webp", alt: "Промоутер с листовками" },
     ],
     tagsLabel: "А ещё задания",
     tags: ["без опыта", "рядом с домом", "на 4 часа", "разовые", "по выходным", "вечерние", "ночные"],

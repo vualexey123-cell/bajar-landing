@@ -16,10 +16,10 @@ export const jobsUz: JobsDict = {
     primary: "Topshiriqlarni ko‘rish",
     soft: "Ijrochi qidiryapman",
     photos: [
-      { src: "/img/warehouse.webp", alt: "Skaner va quti ushlagan buyurtma yig‘uvchi" },
-      { src: "/img/waiter.webp", alt: "Patnis ushlagan ofitsiant ayol" },
-      { src: "/img/cleaner.webp", alt: "Purkagich ushlagan tozalovchi ayol" },
-      { src: "/img/driver.webp", alt: "Mashina kalitini ushlagan haydovchi" },
+      { src: "/img/w-courier.webp", alt: "Dubulg‘a va telefon ushlagan kuryer" },
+      { src: "/img/w-merch.webp", alt: "Olma qutisini ushlagan merchendayzer" },
+      { src: "/img/w-loader.webp", alt: "Qutilarni ko‘targan yuk tashuvchi" },
+      { src: "/img/w-barista.webp", alt: "Ikki stakan qahva ushlagan barista" },
     ],
     phone: {
       title: "Yaqin atrofda",
@@ -136,10 +136,10 @@ export const jobsUz: JobsDict = {
   audiences: {
     title: "Grafigingizga mos qo‘shimcha ish",
     items: [
-      { label: "Talabalarga", image: "/img/student.webp", alt: "Ryukzak va telefon ushlagan talaba qiz" },
-      { label: "Asosiy ishdan keyin", image: "/img/office.webp", alt: "Yelkasiga pidjak tashlagan erkak" },
-      { label: "Qo‘li gul ustalarga", image: "/img/builder.webp", alt: "Shurupovyort ushlagan usta" },
-      { label: "Dam olish kunlari", image: "/img/hostess.webp", alt: "Planshet ushlagan xostes" },
+      { label: "Talabalarga", image: "/img/w-student.webp", alt: "Quloqchin va ryukzakli talaba" },
+      { label: "Asosiy ishdan keyin", image: "/img/w-office.webp", alt: "Ishdan keyin plash kiygan, sumkali ayol" },
+      { label: "Qo‘li gul ustalarga", image: "/img/w-handyman.webp", alt: "Asboblar qutisini ushlagan usta" },
+      { label: "Dam olish kunlari", image: "/img/w-promoter.webp", alt: "Varaqalar ushlagan promouter" },
     ],
     tagsLabel: "Yana topshiriqlar",
     tags: ["tajribasiz", "uyga yaqin", "4 soatga", "bir martalik", "dam olish kunlari", "kechki", "tungi"],

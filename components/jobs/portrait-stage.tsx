@@ -28,7 +28,7 @@ export function PortraitStage({ photos, children }: { photos: Photo[]; children:
 
 function Portrait({ photo, className }: { photo: Photo; className: string }) {
   return (
-    <div className={`aspect-[4/5] overflow-hidden rounded-tile bg-[#4563a6] shadow-soft ${className}`}>
+    <div className={`aspect-[4/5] overflow-hidden rounded-tile bg-[var(--photo-bg)] shadow-soft ${className}`}>
       <div className="relative h-full w-full">
         <Image src={asset(photo.src)} alt={photo.alt} fill sizes="200px" className="object-cover object-[50%_20%]" />
       </div>
