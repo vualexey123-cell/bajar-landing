@@ -54,12 +54,7 @@ function ProductLink({
       onClick={onNavigate}
       className={`flex items-start gap-3 rounded-chip p-3 transition-colors hover:bg-surface-2 ${active ? "bg-surface-2" : ""}`}
     >
-      {/* Contractor products carry the warm palette, business ones the brand one */}
-      <span
-        className={`grid size-10 shrink-0 place-items-center rounded-chip bg-accent-soft text-accent-text ${
-          audienceOf[page] === "workers" ? "theme-worker" : ""
-        }`}
-      >
+      <span className="grid size-10 shrink-0 place-items-center rounded-chip bg-accent-soft text-accent-text">
         <Icon size={20} weight="bold" aria-hidden />
       </span>
       <span>
@@ -111,8 +106,6 @@ export function SiteHeader({
   const [menu, setMenu] = useState<Audience | null>(null);
   const headerRef = useRef<HTMLElement>(null);
   const uid = useId();
-  // Contractor pages get their own palette for the main button.
-  const ctaTheme = audienceOf[page] === "workers" ? "theme-worker" : "";
 
   useMotionValueEvent(scrollY, "change", (y) => {
     const next = y > 12;
@@ -224,7 +217,7 @@ export function SiteHeader({
 
           <div className="flex items-center gap-2">
             <LanguageSwitch t={t} locale={locale} page={page} />
-            <div className={`hidden sm:block ${ctaTheme}`}>
+            <div className="hidden sm:block">
               <Button href={cta.href}>{cta.label}</Button>
             </div>
             <button
@@ -268,7 +261,7 @@ export function SiteHeader({
                   </div>
                 </motion.div>
               ))}
-              <div className={ctaTheme} onClick={() => setOpen(false)}>
+              <div onClick={() => setOpen(false)}>
                 <Button href={cta.href} size="lg" className="w-full">
                   {cta.label}
                 </Button>

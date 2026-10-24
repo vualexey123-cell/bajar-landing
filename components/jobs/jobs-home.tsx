@@ -9,14 +9,14 @@ import { WorkerBenefits } from "@/components/jobs/worker-benefits";
 import { GigBoard } from "@/components/jobs/gig-board";
 import { Audiences } from "@/components/jobs/audiences";
 
-// Bajar Gigs for one language: /jobs/, /uz/jobs/, /en/jobs/. Contractor side, warm palette.
+// Bajar Gigs for one language: /jobs/, /uz/jobs/, /en/jobs/. Contractor side of the marketplace.
 export function JobsHome({ locale }: { locale: Locale }) {
   const t = dictionaries[locale];
   const j = jobsDictionaries[locale];
   return (
     <>
       <SiteHeader t={t} locale={locale} page="jobs" cta={{ label: j.hero.primary, href: "#gigs" }} />
-      <main className="theme-worker bg-bg text-ink">
+      <main>
         <JobsHero t={t} j={j} hireHref={pagePath(locale, "hire")} />
         {/* Companies that land here are sent to Bajar Hire */}
         <ProductBand {...j.teaser} href={pagePath(locale, "hire")} tone="deep" />

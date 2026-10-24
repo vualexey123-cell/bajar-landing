@@ -44,50 +44,6 @@
   }
 }
 
-/* Palette for the contractor-facing pages: lime accent with near-black, after
-   the Gold Apple pairing the founder likes. Components keep using the same
-   utilities (bg-accent, bg-surface...), the tokens change under them. Lime is
-   too light for text on white, so accent-text is a dark olive. */
-.theme-worker {
-  --bg: #f3f4ef;
-  --surface: #fcfdf8;
-  --surface-2: #e8eae1;
-  --ink: #121410;
-  --ink-2: #585d50;
-  --line: #dde0d4;
-  --accent: #dcff00;
-  --accent-hover: #e5ff40;
-  --on-accent: #121410;
-  --accent-soft: #eefab8;
-  --accent-text: #4b6500;
-  --deep: #121410;
-  --deep-2: #20231b;
-  --on-deep: #f4f6ee;
-  --on-deep-2: #b3b8a7;
-  --shadow-tint: 80 20% 10%;
-  --photo-bg: #2a2c27;
-}
-
-@media (prefers-color-scheme: dark) {
-  .theme-worker {
-    --bg: #0e0f0c;
-    --surface: #171913;
-    --surface-2: #22251d;
-    --ink: #f2f4ec;
-    --ink-2: #a6ac99;
-    --line: #2b2f25;
-    --accent: #dcff00;
-    --accent-hover: #e5ff40;
-    --on-accent: #121410;
-    --accent-soft: #283210;
-    --accent-text: #dcff00;
-    --deep: #1a1d15;
-    --deep-2: #262a1f;
-    --on-deep: #f4f6ee;
-    --on-deep-2: #b3b8a7;
-    --shadow-tint: 80 30% 3%;
-  }
-}
 
 @theme inline {
   --color-bg: var(--bg);

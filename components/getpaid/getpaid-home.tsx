@@ -8,14 +8,14 @@ import { GetPaidHero } from "@/components/getpaid/getpaid-hero";
 import { GetPaidBenefits } from "@/components/getpaid/getpaid-benefits";
 
 // "Get paid" for one language: /get-paid/, /uz/get-paid/, /en/get-paid/.
-// Contractor side of Bajar Payouts, in the warm palette.
+// Contractor side of Bajar Payouts.
 export function GetPaidHome({ locale }: { locale: Locale }) {
   const t = dictionaries[locale];
   const g = getPaidDictionaries[locale];
   return (
     <>
       <SiteHeader t={t} locale={locale} page="getpaid" cta={{ label: g.hero.primary, href: "#how" }} />
-      <main className="theme-worker bg-bg text-ink">
+      <main>
         <GetPaidHero g={g} jobsHref={pagePath(locale, "jobs")} />
         <GetPaidBenefits t={t} g={g} />
         <HowItWorks steps={g.steps} />
